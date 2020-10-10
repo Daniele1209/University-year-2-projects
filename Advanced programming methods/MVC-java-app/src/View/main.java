@@ -39,6 +39,11 @@ public class main {
         catch(Custom_exception exept) {
             System.out.println(exept);
         }
+        //function for the task of the problem
+
+        IAquatic_animal[] animals_to_show = controller.show_over_1();
+        for(IAquatic_animal animal : animals_to_show)
+            System.out.println(animal.get_name());
     }
 
 }

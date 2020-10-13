@@ -25,13 +25,23 @@ public class Controller {
     public IAquatic_animal[] show_over_1()
     {
         int index = 0;
+        int size = 0;
         IAquatic_animal[] animals = repository.get_all();
 
+
+        //see how many animals over 1 year old
+        for(IAquatic_animal animal: animals) {
+            if (animal.get_age() > 1) {
+                size++;
+            }
+        }
+        IAquatic_animal[] animals_over_1 = new IAquatic_animal[size];
+        //put the animals in the new list
         for(IAquatic_animal animal: animals)
             if(animal.get_age() > 1) {
-                animals[index] = animal;
-                index++;
+                animals_over_1[index++] = animal;
             }
-        return animals;
+
+        return animals_over_1;
     }
 }

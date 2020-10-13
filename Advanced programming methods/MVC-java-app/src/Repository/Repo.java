@@ -37,7 +37,7 @@ public class Repo implements IRepo  {
             }
         }
         if(!removed)
-            throw new Custom_exception("Error 404: Aquatic animal not found !\n");
+            throw new Custom_exception("Aquatic animal not found !\n");
     }
 
     @Override

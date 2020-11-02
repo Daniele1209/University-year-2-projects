@@ -17,7 +17,9 @@ import Repository.Repo;
 import Controller.Controller;
 import Model.PrgState;
 
+import java.time.temporal.ValueRange;
 import java.util.Scanner;
+import java.util.concurrent.CompletionStage;
 
 public class Main {
 
@@ -51,6 +53,15 @@ public class Main {
                         new CompStmt(new IfStmt(new VarExp("a"),new AssignStmt("v",new ValueExp(new IntegerValue(2))),
                                 new AssignStmt("v", new ValueExp(new IntegerValue(3)))), new PrintStmt(new VarExp("v"))))));
 
+        //Example4:
+        //int a;int b;
+        //a=10;b=a/0;
+        IStmt ex4 = new CompStmt(new VarDeclStmt("a", new IntegerType()),
+                                 new CompStmt(new VarDeclStmt("b", new IntegerType()),
+                                    new CompStmt(new AssignStmt("a", new ValueExp(new IntegerValue(10))),
+                                         new CompStmt(new AssignStmt("b", new ArithExp('/', new VarExp("a"), new ValueExp(new IntegerValue(0)))),
+                                                 new PrintStmt(new VarExp("a"))))));
+
 
         boolean program_end = true;
         while(program_end) {
@@ -59,6 +70,7 @@ public class Main {
             System.out.println("ex1: int v; v=2;\n");
             System.out.println("ex2: int a;int b;\n" + "     a=2+3*5;b=a+1;\n");
             System.out.println("ex3: bool a; int v; a=true;\n" + "     (If a Then v=2 Else v=3);\n");
+            System.out.println("ex4: int a; int b;\n" + "     a=10;b=a/0;\n");
             String option = scan.nextLine();
 
             if(option.equals("ex1")) {
@@ -70,6 +82,9 @@ public class Main {
             else if(option.equals("ex3")) {
                 stack.push(ex3);
             }
+            else if(option.equals("ex4")) {
+                stack.push(ex4);
+            }
             else
                 System.out.println("Select a valid example !\n");
 
@@ -79,7 +94,7 @@ public class Main {
                 try {
                     repository.addPrg(program_state);
                     controller.allStep();
-                } catch (Custom_Exception exeption) {
+                } catch (Custom_Exception | ADTException | EXPException | STMTException exeption) {
                     System.out.println(exeption.getMessage());
                 }
             }

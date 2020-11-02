@@ -39,7 +39,7 @@ public class Controller {
             try {
                 oneStep(program_state);
                 System.out.println(program_state);
-            } catch(Custom_Exception| ADTException | EXPException | STMTException exept) {
+            } catch(Custom_Exception | ADTException | EXPException | STMTException exept) {
                 throw new Custom_Exception(exept.getMessage());
             }
         }

@@ -1,5 +1,7 @@
 package Model.stmt;
 
+import Model.Exceptions.ADTException;
+import Model.Exceptions.Custom_Exception;
 import Model.Exceptions.EXPException;
 import Model.Exceptions.STMTException;
 import Model.PrgState;
@@ -18,7 +20,7 @@ public class AssignStmt implements IStmt{
     }
 
     @Override
-    public PrgState execute(PrgState program_state) throws STMTException, EXPException {
+    public PrgState execute(PrgState program_state) throws STMTException, EXPException, Custom_Exception {
         IDict<String, IValue> symTable = program_state.getSymTable();
         IValue val = expression.eval(symTable);
 
@@ -33,7 +35,6 @@ public class AssignStmt implements IStmt{
         else
             throw new STMTException(id + " variable not declared before !");
         program_state.setSymTable(symTable);
-
         return program_state;
     }
 

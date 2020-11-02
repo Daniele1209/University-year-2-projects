@@ -26,7 +26,7 @@ public class ArithExp implements Exp{
         if (op == '*')
             return new IntegerValue(((IntegerValue)left).getValue() * ((IntegerValue)right).getValue());
         if (op == '/')
-            if(((IntegerValue)left).getValue() != 0)
+            if(((IntegerValue)right).getValue() != 0)
                 return new IntegerValue(((IntegerValue)left).getValue() / ((IntegerValue)right).getValue());
             else
                 throw new EXPException("Division by 0 !");

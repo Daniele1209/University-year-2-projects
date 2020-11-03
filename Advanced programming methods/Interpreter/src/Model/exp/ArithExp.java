@@ -1,4 +1,5 @@
 package Model.exp;
+import Model.Type.IntegerType;
 import Model.Value.IValue;
 import Model.Value.IntegerValue;
 import Model.adt.IDict;
@@ -18,6 +19,11 @@ public class ArithExp implements Exp{
     public IValue eval(IDict<String, IValue> symTable) throws EXPException {
         IValue left = e1.eval(symTable);
         IValue right = e2.eval(symTable);
+
+        if(!left.getType().equals(new IntegerType()))
+            throw new EXPException("Left side does not contain an integer value !");
+        if(!right.getType().equals(new IntegerType()))
+        throw new EXPException("Right side does not contain an integer value !");
 
         if (op == '+')
             return new IntegerValue(((IntegerValue)left).getValue() + ((IntegerValue)right).getValue());

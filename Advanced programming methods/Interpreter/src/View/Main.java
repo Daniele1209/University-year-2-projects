@@ -85,6 +85,9 @@ public class Main {
             else if(option.equals("ex4")) {
                 stack.push(ex4);
             }
+            else if(option.equals("exit")) {
+                program_end = false;
+            }
             else
                 System.out.println("Select a valid example !\n");
 

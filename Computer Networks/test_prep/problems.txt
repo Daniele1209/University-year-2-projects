@@ -1,0 +1,4 @@
+- s1.py, s1.php and c1.py are for problem 1.2
+- c2.py, c2.php and s2.py are for problem 2.4
+- s3.py and c3.php are for problem 3.7
+- s4.py and c4.php are for problem 4.1

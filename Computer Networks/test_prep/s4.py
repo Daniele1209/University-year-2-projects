@@ -1,18 +1,35 @@
 import socket
+import time
+import os
+import threading
+import pickle
 
-server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-server.bind(("0.0.0.0", 8888))
+def get_sum(number):
+    summ = 0
+    while number:
+        summ += number % 10
+        number /= 10
+    return summ
 
-print("SERVER RUNNING")
-data, addr = server.recvfrom(50)
+def multi(cs, addr):
+    data = cs.recv(1024)
+    string = pickle.loads(data)
+    print(str(string) + " -> " + str(addr[1]))
+    summ = get_sum(addr[1])
+    
+    data = pickle.dumps(str(summ))
+    cs.send(data)
+    cs.close()
 
-print(data)
-print(addr)
-summ = 0
 
-number = int(addr[1])
-while number:
-    summ += number % 10
-    number /= 10
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(("127.0.0.1", 8888))
+server.listen(5)
 
-server.sendto(str(summ), addr)
+print("SERVER RUNNING...")
+
+while True:
+    con, addr = server.accept()
+    print(str(addr) + " Connected...")
+    t = threading.Thread(target=multi, args=(con, addr))
+    t.start()

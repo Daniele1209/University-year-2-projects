@@ -20,11 +20,6 @@ public class ArithExp implements Exp{
         IValue left = e1.eval(symTable);
         IValue right = e2.eval(symTable);
 
-        if(!left.getType().equals(new IntegerType()))
-            throw new EXPException("Left side does not contain an integer value !");
-        if(!right.getType().equals(new IntegerType()))
-        throw new EXPException("Right side does not contain an integer value !");
-
         if (op == '+')
             return new IntegerValue(((IntegerValue)left).getValue() + ((IntegerValue)right).getValue());
         if (op == '-')

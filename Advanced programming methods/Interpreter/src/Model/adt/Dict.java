@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import Model.Exceptions.ADTException;
+import Model.Value.StringValue;
 
 public class Dict<T1,T2> implements IDict<T1,T2> {
     HashMap<T1, T2> dictionary;
@@ -30,7 +31,15 @@ public class Dict<T1,T2> implements IDict<T1,T2> {
     }
 
     @Override
-    public boolean isDefined(String id) {
+    public void remove(T1 id) throws ADTException{
+        if(dictionary.containsKey(id))
+            dictionary.remove(id);
+        else
+            throw new ADTException("Id not found !");
+    }
+
+    @Override
+    public boolean isDefined(T1 id) {
         return dictionary.containsKey(id);
     }
 

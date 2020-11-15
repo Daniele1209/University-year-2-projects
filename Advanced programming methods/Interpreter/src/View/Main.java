@@ -62,7 +62,6 @@ public class Main {
                                          new CompStmt(new AssignStmt("b", new ArithExp('/', new VarExp("a"), new ValueExp(new IntegerValue(0)))),
                                                  new PrintStmt(new VarExp("a"))))));
 
-
         boolean program_end = true;
         while(program_end) {
             Scanner scan = new Scanner(System.in);

@@ -8,6 +8,8 @@ import Repository.IRepo;
 import Repository.Repo;
 import Model.Exceptions.Custom_Exception;
 import Model.stmt.IStmt;
+
+import java.io.IOException;
 import java.util.List;
 import Model.PrgState;
 
@@ -32,9 +34,9 @@ public class Controller {
             throw new Custom_Exception("Empty stack !");
     }
 
-    public void allStep() throws Custom_Exception, EXPException, STMTException, ADTException {
+    public void allStep() throws Custom_Exception, EXPException, STMTException, ADTException, IOException {
         PrgState program_state = repository.getCrtPrg();
-
+        repository.printState(program_state);
         while(!program_state.getStack().isEmpty()) {
             try {
                 oneStep(program_state);

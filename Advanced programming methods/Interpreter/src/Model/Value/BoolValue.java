@@ -18,6 +18,15 @@ public class BoolValue implements IValue {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BoolValue))
+            return false;
+        BoolValue iv = (BoolValue) o;
+        return iv.value == value;
+    }
+
+    @Override
     public IType getType() {
         return new BoolType();
     }

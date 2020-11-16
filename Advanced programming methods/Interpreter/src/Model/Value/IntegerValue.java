@@ -19,6 +19,16 @@ public class IntegerValue implements IValue {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof IntegerValue))
+            return false;
+        IntegerValue iv = (IntegerValue) o;
+        return iv.value == value;
+        //return val.equals(t.val);
+    }
+
+    @Override
     public IType getType() {
         return new IntegerType();
     }

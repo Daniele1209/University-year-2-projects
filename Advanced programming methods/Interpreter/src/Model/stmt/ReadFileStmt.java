@@ -31,7 +31,7 @@ public class ReadFileStmt implements IStmt{
         IDict<StringValue, BufferedReader> file_table = program_state.getFileTable();
 
         if (symTable.isDefined(name_var)) {
-            if (symTable.lookup(name_var).getType().equals(new IntegerType())) {
+
                 IValue exp_val = expression.eval(symTable);
 
                 if(exp_val.getType().equals(new StringType())) {
@@ -63,10 +63,6 @@ public class ReadFileStmt implements IStmt{
                 else {
                     throw new STMTException("Failed to evaluate a string value");
                 }
-            }
-            else {
-                throw new STMTException("Not an integer type !");
-            }
         }
         else {
             throw new STMTException(name_var + " not defined before using it !");

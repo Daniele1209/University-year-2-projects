@@ -1,6 +1,7 @@
 package Repository;
 import Model.Exceptions.Custom_Exception;
 import Model.PrgState;
+import Model.stmt.IStmt;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -12,10 +13,20 @@ public class Repo implements IRepo {
 
     List<PrgState> myPrgStates;
     String file_name;
+    IStmt originalProgram;
 
-    public Repo(String name) throws Custom_Exception, IOException {
+    public Repo(PrgState program_state, String name) throws Custom_Exception, IOException {
         file_name = name;
         myPrgStates = new LinkedList<>();
+        originalProgram = program_state.getOriginalProgram();
+
+        File file = new File(file_name);
+        file.createNewFile();
+        try(FileWriter file_write = new FileWriter(file)) {
+            file_write.write(" ");
+        } catch (IOException err) {
+            throw new Custom_Exception(err.getMessage());
+        }
     }
 
     @Override
@@ -35,9 +46,9 @@ public class Repo implements IRepo {
         File file = new File(file_name);
         file.createNewFile();
 
-        try {
-            FileWriter file_write = new FileWriter(file ,true);
-            file_write.write(program_state.toString());
+        try (FileWriter file_write = new FileWriter(file ,true)) {
+            file_write.write(program_state + "\n");
+            file_write.close();
         } catch(Exception err) {
             throw new Custom_Exception(err.getMessage());
         }

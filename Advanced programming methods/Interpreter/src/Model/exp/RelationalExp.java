@@ -14,6 +14,8 @@ public class RelationalExp implements Exp{
 
     public RelationalExp(Exp e1, Exp e2, String operation) {
         expression1 = e1;
+        expression2 = e2;
+        op = operation;
     }
 
     @Override

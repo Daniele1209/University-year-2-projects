@@ -7,9 +7,11 @@ import Model.PrgState;
 import Model.Type.BoolType;
 import Model.Type.IType;
 import Model.Type.IntegerType;
+import Model.Type.StringType;
 import Model.Value.BoolValue;
 import Model.Value.IValue;
 import Model.Value.IntegerValue;
+import Model.Value.StringValue;
 import Model.adt.IDict;
 import Model.adt.IStack;
 
@@ -34,6 +36,8 @@ public class VarDeclStmt implements IStmt {
                 symTable.add(name, new IntegerValue());
             else if(type.equals(new BoolType()))
                 symTable.add(name, new BoolValue());
+            else if(type.equals(new StringType()))
+                symTable.add(name, new StringValue());
             else
                 throw new STMTException("Not a valid type !");
 

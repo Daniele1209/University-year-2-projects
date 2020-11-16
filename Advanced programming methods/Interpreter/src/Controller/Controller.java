@@ -40,7 +40,7 @@ public class Controller {
         while(!program_state.getStack().isEmpty()) {
             try {
                 oneStep(program_state);
-                System.out.println(program_state);
+                repository.printState(program_state);
             } catch(Custom_Exception | ADTException | EXPException | STMTException exept) {
                 throw new Custom_Exception(exept.getMessage());
             }

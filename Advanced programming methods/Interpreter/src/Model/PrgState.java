@@ -16,11 +16,13 @@ public class PrgState {
     IStmt originalProgram; //optional field, but good to have
     IDict<StringValue, BufferedReader> file_table;
 
-    public PrgState(IStack<IStmt> stack, IDict<String, IValue> SymTable, IList<IValue> Out,  IDict<StringValue, BufferedReader> fileTable) {
+    public PrgState(IStack<IStmt> stack, IDict<String, IValue> SymTable, IList<IValue> Out,  IDict<StringValue, BufferedReader> fileTable, IStmt program_state) {
         exeStack = stack;
         symTable = SymTable;
         out = Out;
         file_table = fileTable;
+        originalProgram = program_state;
+        exeStack.push(program_state);
     }
 
     //getters

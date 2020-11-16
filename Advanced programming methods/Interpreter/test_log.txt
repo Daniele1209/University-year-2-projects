@@ -1,0 +1,115 @@
+ Stack: 
+boolean a;
+integer v;
+a = true;
+if(a) then { v = 2 } else { v = 3 };
+print(v) 
+Sym table: 
+
+File table: 
+
+Output: 
+
+
+Stack: 
+integer v;
+a = true;
+if(a) then { v = 2 } else { v = 3 };
+print(v) boolean a 
+Sym table: 
+
+File table: 
+
+Output: 
+
+
+Stack: 
+integer v;
+a = true;
+if(a) then { v = 2 } else { v = 3 };
+print(v) 
+Sym table: 
+a-false 
+File table: 
+
+Output: 
+
+
+Stack: 
+a = true;
+if(a) then { v = 2 } else { v = 3 };
+print(v) integer v 
+Sym table: 
+a-false 
+File table: 
+
+Output: 
+
+
+Stack: 
+a = true;
+if(a) then { v = 2 } else { v = 3 };
+print(v) 
+Sym table: 
+a-false v-false 
+File table: 
+
+Output: 
+
+
+Stack: 
+if(a) then { v = 2 } else { v = 3 };
+print(v) a = true 
+Sym table: 
+a-false v-false 
+File table: 
+
+Output: 
+
+
+Stack: 
+if(a) then { v = 2 } else { v = 3 };
+print(v) 
+Sym table: 
+a-true v-false 
+File table: 
+
+Output: 
+
+
+Stack: 
+print(v) if(a) then { v = 2 } else { v = 3 } 
+Sym table: 
+a-true v-false 
+File table: 
+
+Output: 
+
+
+Stack: 
+print(v) v = 2 
+Sym table: 
+a-true v-false 
+File table: 
+
+Output: 
+
+
+Stack: 
+print(v) 
+Sym table: 
+a-true v-2 
+File table: 
+
+Output: 
+
+
+Stack: 
+
+Sym table: 
+a-true v-2 
+File table: 
+
+Output: 
+2 
+

@@ -3,14 +3,14 @@
 create procedure modif_type
 as
 	alter table Genre 
-	alter column Type int;
+	alter column Type varchar(100);
 go
 
 -- change the type back to varchar
 create procedure modif_type_undo
 as
 	alter table Genre
-	alter column Type varchar(50)
+	alter column Type varchar(50);
 go
 
 -- add a column
@@ -43,15 +43,15 @@ go
 -- add primary key
 create procedure add_pkey
 as
-	alter table Shop
-	add constraint Shop_VideoGame_pk primary key (SVid)
+	alter table ShopManager
+	drop constraint PK__ShopMana__BEBF8B38D54190B6
 go
 
 -- remove primary key
 create procedure remove_pkey
 as
-	alter table Shop
-	drop constraint Shop_VideoGame_pk
+	alter table ShopManager
+	add constraint PK__ShopMana__BEBF8B38D54190B6 primary key(Smid)
 go
 
 -- add candidate key
@@ -138,7 +138,7 @@ go
 
 create procedure get_version @v int output
 as
-	select @v = v.version from version v
+	select @v = ver.version from version ver
 go
 
 create procedure update_history @old int, @new int
@@ -154,6 +154,8 @@ go
 
 create procedure change_version @version int
 as
+	if @version > 7 or @version < 1
+	RAISERROR('Not a valid version', 16, 1);
 	declare @curr_ver int = 1;
 	declare @src int = @curr_ver
 	exec get_version @v = @curr_ver output
@@ -176,13 +178,15 @@ as
 
 go
 
+use Video_Games
 
-exec change_version @version = 0
 create table Version_history (
-id int primary key,
+id int primary key identity(1,1),
 old_version int,
 new_version int
 )
 create table Version ( version int )
-insert into Version(version) values (0);
+exec change_version @version = 6
+insert into Version(version) values (1);
 
+select * from Version_history

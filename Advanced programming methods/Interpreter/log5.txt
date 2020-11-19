@@ -1,1 +1,226 @@
- 
+ Stack: 
+string varf;
+varf = test.txt;
+file_open (varf);
+integer varc;
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf) 
+Sym table: 
+
+File table: 
+
+Output: 
+
+
+Stack: 
+varf = test.txt;
+file_open (varf);
+integer varc;
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf) string varf 
+Sym table: 
+
+File table: 
+
+Output: 
+
+
+Stack: 
+varf = test.txt;
+file_open (varf);
+integer varc;
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf) 
+Sym table: 
+varf- 
+File table: 
+
+Output: 
+
+
+Stack: 
+file_open (varf);
+integer varc;
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf) varf = test.txt 
+Sym table: 
+varf- 
+File table: 
+
+Output: 
+
+
+Stack: 
+file_open (varf);
+integer varc;
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf) 
+Sym table: 
+varf-test.txt 
+File table: 
+
+Output: 
+
+
+Stack: 
+integer varc;
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf) file_open (varf) 
+Sym table: 
+varf-test.txt 
+File table: 
+
+Output: 
+
+
+Stack: 
+integer varc;
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf) 
+Sym table: 
+varf-test.txt 
+File table: 
+test.txt-java.io.BufferedReader@6d21714c 
+Output: 
+
+
+Stack: 
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf) integer varc 
+Sym table: 
+varf-test.txt 
+File table: 
+test.txt-java.io.BufferedReader@6d21714c 
+Output: 
+
+
+Stack: 
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf) 
+Sym table: 
+varf-test.txt varc-false 
+File table: 
+test.txt-java.io.BufferedReader@6d21714c 
+Output: 
+
+
+Stack: 
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf) reading_from (varf) 
+Sym table: 
+varf-test.txt varc-false 
+File table: 
+test.txt-java.io.BufferedReader@6d21714c 
+Output: 
+
+
+Stack: 
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf) 
+Sym table: 
+varf-test.txt varc-15 
+File table: 
+test.txt-java.io.BufferedReader@6d21714c 
+Output: 
+
+
+Stack: 
+reading_from (varf);
+print(varc);
+closing_file (varf) print(varc) 
+Sym table: 
+varf-test.txt varc-15 
+File table: 
+test.txt-java.io.BufferedReader@6d21714c 
+Output: 
+
+
+Stack: 
+reading_from (varf);
+print(varc);
+closing_file (varf) 
+Sym table: 
+varf-test.txt varc-15 
+File table: 
+test.txt-java.io.BufferedReader@6d21714c 
+Output: 
+15 
+
+Stack: 
+print(varc);
+closing_file (varf) reading_from (varf) 
+Sym table: 
+varf-test.txt varc-15 
+File table: 
+test.txt-java.io.BufferedReader@6d21714c 
+Output: 
+15 
+
+Stack: 
+print(varc);
+closing_file (varf) 
+Sym table: 
+varf-test.txt varc-40 
+File table: 
+test.txt-java.io.BufferedReader@6d21714c 
+Output: 
+15 
+
+Stack: 
+closing_file (varf) print(varc) 
+Sym table: 
+varf-test.txt varc-40 
+File table: 
+test.txt-java.io.BufferedReader@6d21714c 
+Output: 
+15 
+
+Stack: 
+closing_file (varf) 
+Sym table: 
+varf-test.txt varc-40 
+File table: 
+test.txt-java.io.BufferedReader@6d21714c 
+Output: 
+15 40 
+
+Stack: 
+
+Sym table: 
+varf-test.txt varc-40 
+File table: 
+
+Output: 
+15 40 
+

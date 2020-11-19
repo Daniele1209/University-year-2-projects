@@ -40,7 +40,7 @@ public class OpenFileStmt implements IStmt{
                 }
             }
             else {
-                throw new STMTException("Can not access file at this moment !");
+                throw new STMTException("Can not access the file !");
             }
         }
         else {

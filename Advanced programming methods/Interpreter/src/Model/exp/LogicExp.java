@@ -3,6 +3,7 @@ import Model.Exceptions.EXPException;
 import Model.Value.BoolValue;
 import Model.Value.IValue;
 import Model.adt.IDict;
+import Model.adt.IHeap;
 
 public class LogicExp implements Exp{
     String op;
@@ -15,9 +16,9 @@ public class LogicExp implements Exp{
     }
 
     @Override
-    public IValue eval(IDict<String, IValue> symTable) throws EXPException {
-        IValue left = e1.eval(symTable);
-        IValue right = e2.eval(symTable);
+    public IValue eval(IDict<String, IValue> symTable, IHeap<IValue> heap) throws EXPException {
+        IValue left = e1.eval(symTable, heap);
+        IValue right = e2.eval(symTable, heap);
 
         if (op.equals("||"))
             return new BoolValue(((BoolValue)left).getValue() || ((BoolValue)right).getValue());

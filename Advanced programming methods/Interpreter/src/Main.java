@@ -45,7 +45,7 @@ public class Main {
         IStmt ex1 = new CompStmt(new VarDeclStmt("v",new IntegerType()),
                 new CompStmt(new AssignStmt("v",new ValueExp(new IntegerValue(2))),
                         new PrintStmt(new VarExp("v"))));
-        PrgState program1 = new PrgState(stack1, new Dict<String, IValue>(), new List<IValue>(), new Dict<StringValue, BufferedReader>(), ex1);
+        PrgState program1 = new PrgState(stack1, new Dict<String, IValue>(), new List<IValue>(), new Dict<StringValue, BufferedReader>(), new Heap<>(),  ex1);
         IRepo repository1 = new Repo(program1,"log1.txt");
         Controller controller1 = new Controller(repository1);
 
@@ -58,7 +58,7 @@ public class Main {
                                 new ArithExp('*',new ValueExp(new IntegerValue(3)), new ValueExp(new IntegerValue(5))))),
                                     new CompStmt(new AssignStmt("b",new ArithExp('+',new VarExp("a"), new ValueExp(new IntegerValue(1)))),
                                         new PrintStmt(new VarExp("b"))))));
-        PrgState program2 = new PrgState(stack2, new Dict<String, IValue>(), new List<IValue>(), new Dict<StringValue, BufferedReader>(), ex2);
+        PrgState program2 = new PrgState(stack2, new Dict<String, IValue>(), new List<IValue>(), new Dict<StringValue, BufferedReader>(),new Heap<>(), ex2);
         IRepo repository2 = new Repo(program2,"log2.txt");
         Controller controller2 = new Controller(repository2);
 
@@ -70,7 +70,7 @@ public class Main {
                     new CompStmt(new AssignStmt("a", new ValueExp(new BoolValue(true))),
                         new CompStmt(new IfStmt(new VarExp("a"),new AssignStmt("v",new ValueExp(new IntegerValue(2))),
                                 new AssignStmt("v", new ValueExp(new IntegerValue(3)))), new PrintStmt(new VarExp("v"))))));
-        PrgState program3 = new PrgState(stack3, new Dict<String, IValue>(), new List<IValue>(), new Dict<StringValue, BufferedReader>(), ex3);
+        PrgState program3 = new PrgState(stack3, new Dict<String, IValue>(), new List<IValue>(), new Dict<StringValue, BufferedReader>(),new Heap<>(), ex3);
         IRepo repository3 = new Repo(program3,"log3.txt");
         Controller controller3 = new Controller(repository3);
 
@@ -82,7 +82,7 @@ public class Main {
                                     new CompStmt(new AssignStmt("a", new ValueExp(new IntegerValue(10))),
                                          new CompStmt(new AssignStmt("b", new ArithExp('/', new VarExp("a"), new ValueExp(new IntegerValue(0)))),
                                                  new PrintStmt(new VarExp("a"))))));
-        PrgState program4 = new PrgState(stack4, new Dict<String, IValue>(), new List<IValue>(), new Dict<StringValue, BufferedReader>(), ex4);
+        PrgState program4 = new PrgState(stack4, new Dict<String, IValue>(), new List<IValue>(), new Dict<StringValue, BufferedReader>(),new Heap<>(), ex4);
         IRepo repository4 = new Repo(program4,"log4.txt");
         Controller controller4 = new Controller(repository4);
 
@@ -96,9 +96,11 @@ public class Main {
                                                         new CompStmt(new ReadFileStmt(new VarExp("varf"), "varc"),
                                                                 new CompStmt(new PrintStmt(new VarExp("varc")),
                                                                         new CloseFileStmt(new VarExp("varf"))))))))));
-        PrgState program5 = new PrgState(stack5, new Dict<String, IValue>(), new List<IValue>(), new Dict<StringValue, BufferedReader>(), ex5);
+        PrgState program5 = new PrgState(stack5, new Dict<String, IValue>(), new List<IValue>(), new Dict<StringValue, BufferedReader>(),new Heap<>(), ex5);
         IRepo repository5 = new Repo(program5,"log5.txt");
         Controller controller5 = new Controller(repository5);
+
+
 
         TextMenu menu = new TextMenu();
         repository1.addPrg(program1);

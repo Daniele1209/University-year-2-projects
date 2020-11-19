@@ -2,6 +2,7 @@ package Model.exp;
 import Model.Exceptions.EXPException;
 import Model.Value.IValue;
 import Model.adt.IDict;
+import Model.adt.IHeap;
 
 public class VarExp implements Exp{
     String id;
@@ -11,7 +12,7 @@ public class VarExp implements Exp{
     }
 
     @Override
-    public IValue eval(IDict<String,IValue> symTable) throws EXPException {
+    public IValue eval(IDict<String,IValue> symTable, IHeap<IValue> heap) throws EXPException {
         return symTable.lookup(id);
     }
 

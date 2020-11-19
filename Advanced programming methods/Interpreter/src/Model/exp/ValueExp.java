@@ -2,6 +2,7 @@ package Model.exp;
 import Model.Value.IValue;
 import Model.Exceptions.EXPException;
 import Model.adt.IDict;
+import Model.adt.IHeap;
 
 public class ValueExp implements Exp{
     IValue v;
@@ -11,7 +12,7 @@ public class ValueExp implements Exp{
     }
 
     @Override
-    public IValue eval(IDict<String,IValue> symTable) throws EXPException {
+    public IValue eval(IDict<String,IValue> symTable, IHeap<IValue> heap) throws EXPException {
         return v;
     }
 

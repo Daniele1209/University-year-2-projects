@@ -6,7 +6,7 @@ import Model.Exceptions.ADTException;
 import Model.Value.StringValue;
 
 public class Dict<T1,T2> implements IDict<T1,T2> {
-    HashMap<T1, T2> dictionary;
+    Map<T1, T2> dictionary;
 
     public Dict() {
         dictionary = new HashMap<>();
@@ -50,5 +50,10 @@ public class Dict<T1,T2> implements IDict<T1,T2> {
             final_string.append(elem.getKey()).append("-").append(elem.getValue()).append(" ");
         }
         return final_string.toString();
+    }
+
+    @Override
+    public Map<T1, T2> getMap() {
+        return dictionary;
     }
 }

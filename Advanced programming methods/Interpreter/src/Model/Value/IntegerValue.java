@@ -25,7 +25,6 @@ public class IntegerValue implements IValue {
             return false;
         IntegerValue iv = (IntegerValue) o;
         return iv.value == value;
-        //return val.equals(t.val);
     }
 
     @Override

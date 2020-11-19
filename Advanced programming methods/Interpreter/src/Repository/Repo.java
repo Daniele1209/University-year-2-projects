@@ -46,7 +46,8 @@ public class Repo implements IRepo {
         File file = new File(file_name);
         file.createNewFile();
 
-        try (FileWriter file_write = new FileWriter(file ,true)) {
+        try{
+            FileWriter file_write = new FileWriter(file ,true);
             file_write.write(program_state + "\n");
             file_write.close();
         } catch(Exception err) {

@@ -4,6 +4,7 @@ import Model.Value.IValue;
 import Model.Value.IntegerValue;
 import Model.adt.IDict;
 import Model.Exceptions.EXPException;
+import Model.adt.IHeap;
 
 public class ArithExp implements Exp{
     char op;
@@ -16,9 +17,9 @@ public class ArithExp implements Exp{
     }
 
     @Override
-    public IValue eval(IDict<String, IValue> symTable) throws EXPException {
-        IValue left = e1.eval(symTable);
-        IValue right = e2.eval(symTable);
+    public IValue eval(IDict<String, IValue> symTable, IHeap<IValue> heap) throws EXPException {
+        IValue left = e1.eval(symTable, heap);
+        IValue right = e2.eval(symTable, heap);
 
         if (op == '+')
             return new IntegerValue(((IntegerValue)left).getValue() + ((IntegerValue)right).getValue());

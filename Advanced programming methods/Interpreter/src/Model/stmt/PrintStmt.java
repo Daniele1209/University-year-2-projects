@@ -20,7 +20,7 @@ public class PrintStmt implements IStmt{
         IStack<IStmt> stk = program_state.getStack();
         IList<IValue> out = program_state.getOut();
 
-        out.add(expression.eval(program_state.getSymTable()));
+        out.add(expression.eval(program_state.getSymTable(), program_state.getHeap()));
         program_state.setExeStack(stk);
         program_state.setOut(out);
 

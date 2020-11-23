@@ -6,6 +6,8 @@ if(a) then { v = 2 } else { v = 3 };
 print(v) 
 Sym table: 
 
+Heap: 
+
 File table: 
 
 Output: 
@@ -18,6 +20,8 @@ if(a) then { v = 2 } else { v = 3 };
 print(v) boolean a 
 Sym table: 
 
+Heap: 
+
 File table: 
 
 Output: 
@@ -30,6 +34,8 @@ if(a) then { v = 2 } else { v = 3 };
 print(v) 
 Sym table: 
 a-false 
+Heap: 
+
 File table: 
 
 Output: 
@@ -41,6 +47,8 @@ if(a) then { v = 2 } else { v = 3 };
 print(v) integer v 
 Sym table: 
 a-false 
+Heap: 
+
 File table: 
 
 Output: 
@@ -51,7 +59,9 @@ a = true;
 if(a) then { v = 2 } else { v = 3 };
 print(v) 
 Sym table: 
-a-false v-false 
+a-false v-0 
+Heap: 
+
 File table: 
 
 Output: 
@@ -61,7 +71,9 @@ Stack:
 if(a) then { v = 2 } else { v = 3 };
 print(v) a = true 
 Sym table: 
-a-false v-false 
+a-false v-0 
+Heap: 
+
 File table: 
 
 Output: 
@@ -71,7 +83,9 @@ Stack:
 if(a) then { v = 2 } else { v = 3 };
 print(v) 
 Sym table: 
-a-true v-false 
+a-true v-0 
+Heap: 
+
 File table: 
 
 Output: 
@@ -80,7 +94,9 @@ Output:
 Stack: 
 print(v) if(a) then { v = 2 } else { v = 3 } 
 Sym table: 
-a-true v-false 
+a-true v-0 
+Heap: 
+
 File table: 
 
 Output: 
@@ -89,7 +105,9 @@ Output:
 Stack: 
 print(v) v = 2 
 Sym table: 
-a-true v-false 
+a-true v-0 
+Heap: 
+
 File table: 
 
 Output: 
@@ -99,6 +117,8 @@ Stack:
 print(v) 
 Sym table: 
 a-true v-2 
+Heap: 
+
 File table: 
 
 Output: 
@@ -108,6 +128,8 @@ Stack:
 
 Sym table: 
 a-true v-2 
+Heap: 
+
 File table: 
 
 Output: 

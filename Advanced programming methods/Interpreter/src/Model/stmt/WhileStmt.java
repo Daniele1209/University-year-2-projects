@@ -30,16 +30,12 @@ public class WhileStmt implements IStmt {
         IHeap<IValue> heap = program_state.getHeap();
         IValue value = expresion.eval(symTable, heap);
 
-        if(value.getType().equals(new BoolValue())) {
-            BoolValue bool = (BoolValue) value;
+        BoolValue bool = (BoolValue) value;
 
-            if(bool.getValue() == true) {
-                stack.push(this);
-                stack.push(statement);
-            }
+        if(bool.getValue() == true) {
+            stack.push(this);
+            stack.push(statement);
         }
-        else
-            throw new STMTException("While statement not a bool !");
 
         return null;
     }

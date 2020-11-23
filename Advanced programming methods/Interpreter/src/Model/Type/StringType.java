@@ -1,6 +1,8 @@
 package Model.Type;
 
+import Model.Value.BoolValue;
 import Model.Value.IValue;
+import Model.Value.StringValue;
 
 public class StringType implements IType{
 
@@ -15,5 +17,10 @@ public class StringType implements IType{
     @Override
     public String toString() {
         return "string";
+    }
+
+    @Override
+    public IValue def_val() {
+        return new StringValue("");
     }
 }

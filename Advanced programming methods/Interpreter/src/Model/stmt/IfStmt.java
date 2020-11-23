@@ -23,7 +23,7 @@ public class IfStmt implements IStmt{
     @Override
     public PrgState execute(PrgState program_state) throws STMTException, EXPException {
         IStack<IStmt> stk = program_state.getStack();
-        IValue val = expression.eval(program_state.getSymTable());
+        IValue val = expression.eval(program_state.getSymTable(), program_state.getHeap());
 
         if(val.getType().equals(new BoolType())) {
             BoolValue bool = (BoolValue) val;

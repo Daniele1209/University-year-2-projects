@@ -36,15 +36,20 @@ public class RelationalExp implements Exp{
         int left_side = integer1.getValue();
         int right_side = integer2.getValue();
 
-        return switch (op) {
-            case "<" -> new BoolValue(left_side < right_side);
-            case "<=" -> new BoolValue(left_side <= right_side);
-            case ">" -> new BoolValue(left_side > right_side);
-            case ">=" -> new BoolValue(left_side >= right_side);
-            case "==" -> new BoolValue(left_side == right_side);
-            case "!=" -> new BoolValue(left_side != right_side);
-            default -> throw new EXPException("Not a valid relational operator");
-        };
+        if(op.equals("<"))
+            return new BoolValue(left_side < right_side);
+        else if(op.equals("<="))
+            return new BoolValue(left_side <= right_side);
+        else if(op.equals(">"))
+            return new BoolValue(left_side > right_side);
+        else if(op.equals(">="))
+            return new BoolValue(left_side >= right_side);
+        else if(op.equals("=="))
+            return new BoolValue(left_side == right_side);
+        else if(op.equals("!="))
+            return new BoolValue(left_side != right_side);
+        else
+            throw new EXPException("Not a valid relational operator");
     }
 
     @Override

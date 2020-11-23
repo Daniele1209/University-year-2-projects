@@ -22,7 +22,7 @@ public class AssignStmt implements IStmt{
     @Override
     public PrgState execute(PrgState program_state) throws STMTException, EXPException, Custom_Exception {
         IDict<String, IValue> symTable = program_state.getSymTable();
-        IValue val = expression.eval(symTable);
+        IValue val = expression.eval(symTable, program_state.getHeap());
 
         if(symTable.isDefined(id)) {
             IType t = (symTable.lookup(id)).getType();

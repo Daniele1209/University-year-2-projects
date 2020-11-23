@@ -25,7 +25,7 @@ public class OpenFileStmt implements IStmt{
     @Override
     public PrgState execute(PrgState program_state) throws STMTException, EXPException, ADTException, Custom_Exception {
         IDict<String, IValue> symTable = program_state.getSymTable();
-        IValue value = expression.eval(symTable);
+        IValue value = expression.eval(symTable, program_state.getHeap());
         if (value.getType().equals(new StringType())) {
 
             IDict<StringValue, BufferedReader> file_table = program_state.getFileTable();

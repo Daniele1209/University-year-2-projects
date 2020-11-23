@@ -3,10 +3,17 @@ package Model.adt;
 import Model.Exceptions.ADTException;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Heap<T> implements IHeap<T> {
     Map<Integer, T> map;
-    int location;
+    AtomicInteger location;
+
+    public Heap() {
+        map = new ConcurrentHashMap<Integer, T>();
+        location = new AtomicInteger(0);
+    }
 
     @Override
     public void add(Integer id, T val) throws ADTException {
@@ -18,10 +25,10 @@ public class Heap<T> implements IHeap<T> {
 
     @Override
     public int allocate(T val) {
-        location ++;
-        map.put(location, val);
+        int aux_loc = location.incrementAndGet();
+        map.put(aux_loc, val);
 
-        return location;
+        return aux_loc;
     }
 
     @Override

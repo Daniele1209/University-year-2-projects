@@ -32,7 +32,7 @@ public class ReadFileStmt implements IStmt{
 
         if (symTable.isDefined(name_var)) {
 
-                IValue exp_val = expression.eval(symTable);
+                IValue exp_val = expression.eval(symTable, program_state.getHeap());
 
                 if(exp_val.getType().equals(new StringType())) {
                     StringValue str_val = (StringValue) exp_val;

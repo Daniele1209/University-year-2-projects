@@ -1,5 +1,9 @@
 package Model.Type;
 
+import Model.Value.IValue;
+import Model.Value.IntegerValue;
+import Model.Value.RefValue;
+
 import java.util.Objects;
 
 public class RefType implements IType{
@@ -20,6 +24,10 @@ public class RefType implements IType{
 
     public IType getInner() {
         return inner;
+    }
+    @Override
+    public IValue def_val() {
+        return new RefValue(inner, 0);
     }
 
     @Override

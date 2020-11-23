@@ -4,15 +4,14 @@ import Model.Exceptions.EXPException;
 import Model.Exceptions.STMTException;
 import Model.Type.BoolType;
 import Model.Type.IntegerType;
+import Model.Type.RefType;
 import Model.Type.StringType;
 import Model.Value.BoolValue;
 import Model.Value.IValue;
 import Model.Value.IntegerValue;
 import Model.Value.StringValue;
 import Model.adt.*;
-import Model.exp.ArithExp;
-import Model.exp.ValueExp;
-import Model.exp.VarExp;
+import Model.exp.*;
 import Model.stmt.*;
 import Repository.IRepo;
 import Repository.Repo;
@@ -36,6 +35,8 @@ public class Main {
         IStack<IStmt> stack3 = new Stackk<>();
         IStack<IStmt> stack4 = new Stackk<>();
         IStack<IStmt> stack5 = new Stackk<>();
+        IStack<IStmt> stack6 = new Stackk<>();
+        IStack<IStmt> stack7 = new Stackk<>();
         //test execution
         ExpressionsTest test = new ExpressionsTest();
         test.ExecTest();
@@ -100,7 +101,26 @@ public class Main {
         IRepo repository5 = new Repo(program5,"log5.txt");
         Controller controller5 = new Controller(repository5);
 
+        IStmt ex6 = new CompStmt(new VarDeclStmt("v", new IntegerType()),
+                new CompStmt(new AssignStmt("v", new ValueExp(new IntegerValue(4))),
+                        new CompStmt(new WhileStmt(new RelationalExp(new VarExp("v"), new ValueExp(new IntegerValue(0)), ">"),
+                                new CompStmt(new PrintStmt(new VarExp("v")), new AssignStmt("v", new ArithExp('-', new VarExp("v"),
+                                        new ValueExp(new IntegerValue(1)))))),
+                                            new PrintStmt(new VarExp("v")))));
+        PrgState program6 = new PrgState(stack6, new Dict<String, IValue>(), new List<IValue>(), new Dict<StringValue, BufferedReader>(),new Heap<>(), ex6);
+        IRepo repository6 = new Repo(program6,"log6.txt");
+        Controller controller6 = new Controller(repository6);
 
+        IStmt ex7 = new CompStmt(new VarDeclStmt("v", new RefType(new IntegerType())),
+                new CompStmt(new NewHeapStmt("v", new ValueExp(new IntegerValue(20))),
+                        new CompStmt(new VarDeclStmt("a", new RefType(new RefType(new IntegerType()))),
+                                new CompStmt(new NewHeapStmt("a", new VarExp("v")),
+                                        new CompStmt(new PrintStmt(new ReadHeapExp(new VarExp("v"))),
+                                                new PrintStmt(new ArithExp('+', new ReadHeapExp(new ReadHeapExp(new VarExp("a"))),
+                                                        new ValueExp(new IntegerValue(5)))))))));
+        PrgState program7 = new PrgState(stack7, new Dict<String, IValue>(), new List<IValue>(), new Dict<StringValue, BufferedReader>(),new Heap<>(), ex7);
+        IRepo repository7 = new Repo(program7,"log7.txt");
+        Controller controller7 = new Controller(repository7);
 
         TextMenu menu = new TextMenu();
         repository1.addPrg(program1);
@@ -108,13 +128,17 @@ public class Main {
         repository3.addPrg(program3);
         repository4.addPrg(program4);
         repository5.addPrg(program5);
+        repository6.addPrg(program6);
+        repository7.addPrg(program7);
 
         menu.addCommand(new RunExample("1", ex1.toString(), controller1));
         menu.addCommand(new RunExample("2", ex2.toString(), controller2));
         menu.addCommand(new RunExample("3", ex3.toString(), controller3));
         menu.addCommand(new RunExample("4", ex4.toString(), controller4));
         menu.addCommand(new RunExample("5", ex5.toString(), controller5));
-        menu.addCommand(new ExitCommand("6", "quit"));
+        menu.addCommand(new RunExample("6", ex6.toString(), controller6));
+        menu.addCommand(new RunExample("7", ex6.toString(), controller7));
+        menu.addCommand(new ExitCommand("8", "quit"));
         menu.show();
 
     }

@@ -26,7 +26,7 @@ public class ReadHeapExp implements Exp{
                 throw new EXPException(ref_value.getAddress() + " address not found !");
         }
         else
-            throw new EXPException("Expression failed to evaluate !");
+            throw new EXPException("Expression failed to evaluate to a RefType!");
     }
 
     @Override

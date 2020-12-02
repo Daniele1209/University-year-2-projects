@@ -37,6 +37,7 @@ public class Main {
         IStack<IStmt> stack5 = new Stackk<>();
         IStack<IStmt> stack6 = new Stackk<>();
         IStack<IStmt> stack7 = new Stackk<>();
+        IStack<IStmt> stack8 = new Stackk<>();
         //test execution
         ExpressionsTest test = new ExpressionsTest();
         test.ExecTest();
@@ -122,6 +123,18 @@ public class Main {
         IRepo repository7 = new Repo(program7,"log7.txt");
         Controller controller7 = new Controller(repository7);
 
+        IStmt ex8 = new CompStmt(new VarDeclStmt("v", new IntegerType()),
+                new CompStmt(new VarDeclStmt("a", new RefType(new IntegerType())),
+                        new CompStmt(new AssignStmt("v", new ValueExp(new IntegerValue(10))),
+                                new CompStmt(new NewHeapStmt("a", new ValueExp(new IntegerValue(22))),
+                                        new CompStmt(new ForkStmt(new CompStmt(new WriteHeapStmt("a", new ValueExp(new IntegerValue(30))),
+                                                new CompStmt(new AssignStmt("v", new ValueExp(new IntegerValue(32))),
+                                                        new CompStmt(new PrintStmt(new VarExp("v")), new PrintStmt(new ReadHeapExp(new VarExp("a"))))))),
+                                                            new CompStmt(new PrintStmt(new VarExp("v")), new PrintStmt(new ReadHeapExp(new VarExp("a")))))))));
+        PrgState program8 = new PrgState(stack8, new Dict<String, IValue>(), new List<IValue>(), new Dict<StringValue, BufferedReader>(),new Heap<>(), ex8);
+        IRepo repository8 = new Repo(program8,"log8.txt");
+        Controller controller8 = new Controller(repository8);
+
         TextMenu menu = new TextMenu();
         repository1.addPrg(program1);
         repository2.addPrg(program2);
@@ -130,6 +143,7 @@ public class Main {
         repository5.addPrg(program5);
         repository6.addPrg(program6);
         repository7.addPrg(program7);
+        repository8.addPrg(program8);
 
         menu.addCommand(new RunExample("1", ex1.toString(), controller1));
         menu.addCommand(new RunExample("2", ex2.toString(), controller2));
@@ -138,7 +152,8 @@ public class Main {
         menu.addCommand(new RunExample("5", ex5.toString(), controller5));
         menu.addCommand(new RunExample("6", ex6.toString(), controller6));
         menu.addCommand(new RunExample("7", ex6.toString(), controller7));
-        menu.addCommand(new ExitCommand("8", "quit"));
+        menu.addCommand(new RunExample("8", ex6.toString(), controller8));
+        menu.addCommand(new ExitCommand("9", "quit"));
         menu.show();
 
     }

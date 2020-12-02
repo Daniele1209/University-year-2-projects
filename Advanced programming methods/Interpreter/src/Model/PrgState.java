@@ -1,4 +1,8 @@
 package Model;
+import Model.Exceptions.ADTException;
+import Model.Exceptions.Custom_Exception;
+import Model.Exceptions.EXPException;
+import Model.Exceptions.STMTException;
 import Model.Value.IValue;
 import Model.Value.StringValue;
 import Model.adt.IDict;
@@ -17,6 +21,7 @@ public class PrgState {
     IStmt originalProgram; //optional field, but good to have
     IDict<StringValue, BufferedReader> file_table;
     IHeap<IValue> heap;
+    static int id;
 
     public PrgState(IStack<IStmt> stack, IDict<String, IValue> SymTable, IList<IValue> Out, IDict<StringValue, BufferedReader> fileTable, IHeap<IValue> heap, IStmt program_state) {
         exeStack = stack;
@@ -73,9 +78,23 @@ public class PrgState {
         this.heap = heap;
     }
 
+    public boolean isNotCompleted() {
+        return !exeStack.isEmpty();
+    }
+
+    public PrgState oneStep() throws Custom_Exception, ADTException, EXPException, STMTException {
+        if (exeStack.isEmpty()) {
+            throw new Custom_Exception("Program stack is empty");
+        }
+        IStmt currentStatement = exeStack.pop();
+        return currentStatement.execute(this);
+    }
+
     @Override
     public String toString() {
         StringBuilder final_string = new StringBuilder();
+        final_string.append("ID: \n");
+        final_string.append(id).append("\n");
         final_string.append("Stack: \n");
         final_string.append(exeStack).append("\n");
         final_string.append("Sym table: \n");

@@ -2,6 +2,7 @@ package Model.adt;
 
 import Model.Exceptions.ADTException;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -11,7 +12,7 @@ public class Heap<T> implements IHeap<T> {
     AtomicInteger location;
 
     public Heap() {
-        map = new ConcurrentHashMap<Integer, T>();
+        map = new HashMap<Integer, T>();
         location = new AtomicInteger(0);
     }
 

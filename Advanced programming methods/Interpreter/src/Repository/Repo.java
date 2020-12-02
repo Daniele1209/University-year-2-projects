@@ -42,6 +42,16 @@ public class Repo implements IRepo {
     }
 
     @Override
+    public List<PrgState> getPrgList() {
+        return myPrgStates;
+    }
+
+    @Override
+    public void setPrgList(List<PrgState> list) {
+        myPrgStates = list;
+    }
+
+    @Override
     public void printState(PrgState program_state) throws Custom_Exception, IOException {
         File file = new File(file_name);
         file.createNewFile();

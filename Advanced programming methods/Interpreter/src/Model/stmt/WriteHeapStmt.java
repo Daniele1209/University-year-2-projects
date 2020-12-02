@@ -11,10 +11,16 @@ import Model.Value.RefValue;
 import Model.adt.IDict;
 import Model.adt.IHeap;
 import Model.exp.Exp;
+import Model.exp.ValueExp;
 
 public class WriteHeapStmt implements IStmt{
     Exp expression;
     String variable;
+
+    public WriteHeapStmt(String a, Exp valueExp) {
+        variable = a;
+        expression = valueExp;
+    }
 
     @Override
     public PrgState execute(PrgState program_state) throws STMTException, EXPException, ADTException, Custom_Exception {

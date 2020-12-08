@@ -21,7 +21,7 @@ public class RunExample extends Command {
         try {
             controller.allStep();
         }
-        catch (Custom_Exception | ADTException | EXPException | STMTException | IOException e) {
+        catch (Custom_Exception | InterruptedException e) {
             System.out.println(e.toString());
         }
     }

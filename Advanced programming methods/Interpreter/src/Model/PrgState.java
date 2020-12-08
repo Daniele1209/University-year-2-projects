@@ -22,6 +22,7 @@ public class PrgState {
     IDict<StringValue, BufferedReader> file_table;
     IHeap<IValue> heap;
     static int id;
+    static int free_id = 0;
 
     public PrgState(IStack<IStmt> stack, IDict<String, IValue> SymTable, IList<IValue> Out, IDict<StringValue, BufferedReader> fileTable, IHeap<IValue> heap, IStmt program_state) {
         exeStack = stack;
@@ -31,6 +32,7 @@ public class PrgState {
         originalProgram = program_state;
         this.heap = heap;
         exeStack.push(program_state);
+        id = newId();
     }
 
     //getters
@@ -80,6 +82,11 @@ public class PrgState {
 
     public boolean isNotCompleted() {
         return !exeStack.isEmpty();
+    }
+
+    public static synchronized int newId() {
+        ++free_id;
+        return free_id;
     }
 
     public PrgState oneStep() throws Custom_Exception, ADTException, EXPException, STMTException {

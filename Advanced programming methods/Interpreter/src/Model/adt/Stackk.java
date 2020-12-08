@@ -7,7 +7,7 @@ public class Stackk<T> implements IStack<T> {
     Stack<T> stack;
 
     public Stackk() {
-        stack = new Stack<>();
+        stack = new Stack<T>();
     }
 
     @Override
@@ -24,7 +24,7 @@ public class Stackk<T> implements IStack<T> {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return stack.isEmpty();
     }
 
     @Override

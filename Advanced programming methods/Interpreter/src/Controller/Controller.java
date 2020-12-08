@@ -21,6 +21,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import Model.PrgState;
 
@@ -41,13 +42,37 @@ public class Controller {
                 .filter(elem -> addr.contains(elem.getKey()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
-    List<Integer> getAddrFromSymTable(Collection<IValue> symTableValues) {
-        return symTableValues.stream()
-                .filter(v -> v instanceof RefValue)
-                .map(v -> {
-                    RefValue v1 = (RefValue) v;
-                    return v1.getAddress();
-                })
+
+    void garbageCollector(List<PrgState> prgList) {
+        List<Integer> adresses = Objects.requireNonNull(prgList.stream()
+                .map(p -> getAddrFromSymTable(
+                        p.getSymTable().getMap().values(),
+                        p.getHeap().getMap().values()))
+                .map(Collection::stream)
+                .reduce(Stream::concat).orElse(null)).collect(Collectors.toList());
+        prgList.forEach(programState -> {
+            programState.getHeap().setMap(
+                    unsafeGarbageCollector(
+                            adresses,
+                            prgList.get(0).getHeap().getMap()
+                    ));
+        });
+    }
+
+    List<Integer> getAddrFromSymTable(Collection<IValue> values, Collection<IValue> symTableValues) {
+        return Stream.concat(
+                symTableValues.stream()
+                        .filter(v -> v instanceof RefValue)
+                        .map(v -> {
+                            RefValue v1 = (RefValue) v;
+                            return v1.getAddress();
+                        })
+                ,values.stream()
+                        .filter(v -> v instanceof RefValue)
+                        .map(v -> {
+                            RefValue v1 = (RefValue) v;
+                            return v1.getAddress();
+                        }))
                 .collect(Collectors.toList());
     }
 /*  *Old version of oneStep()
@@ -79,60 +104,67 @@ public class Controller {
     }
 */
     void oneStepForAllPrg(List<PrgState> prgList) throws InterruptedException, Custom_Exception {
-
-        prgList.forEach(prg -> {
+        System.out.println(prgList);
+        prgList.forEach(prg-> {
             try {
                 repository.printState(prg);
-            } catch (Custom_Exception | IOException e) {
+            } catch (IOException | Custom_Exception e) {
                 e.printStackTrace();
             }
         });
-        List<Callable<PrgState>> callList = prgList.stream()
-                .map((PrgState p) -> (Callable<PrgState>) (p::oneStep))
+        List <Callable<PrgState>> callList = prgList.stream()
+                .map((PrgState p)->(Callable<PrgState>)(p::oneStep))
                 .collect(Collectors.toList());
         try {
             List<PrgState> newPrgList = executor.invokeAll(callList).stream()
                     .map(future -> {
                         try {
                             return future.get();
-                        } catch (InterruptedException | ExecutionException e) {
+                        } catch (ExecutionException | InterruptedException e) {
+                            //System.out.println(e.getMessage());
                         }
                         return null;
                     })
                     .filter(Objects::nonNull)
                     .collect(Collectors.toList());
             prgList.addAll(newPrgList);
-        } catch (InterruptedException err) {
-            throw new Custom_Exception(err.getMessage());
         }
-        //after the execution, print the PrgState List into the log file
+        catch(InterruptedException e)
+        {
+            throw  new Custom_Exception(e.getMessage());
+        }
+
         prgList.forEach(prg -> {
             try {
                 repository.printState(prg);
-            } catch (Custom_Exception | IOException e) {
+            } catch (IOException | Custom_Exception e) {
                 e.printStackTrace();
             }
         });
-        //Save the current programs in the repository
         repository.setPrgList(prgList);
     }
 
-    void allStep() throws Custom_Exception, InterruptedException {
+    public void allStep() throws Custom_Exception, InterruptedException {
         executor = Executors.newFixedThreadPool(2);
         //remove the completed programs
         List<PrgState> prgList = removeCompletedPrograms(repository.getPrgList());
         while(prgList.size() > 0){
-            oneStepForAllPrg(prgList);
-            //remove the completed programs
+            garbageCollector(prgList);
             prgList=removeCompletedPrograms(repository.getPrgList());
+            prgList=removeDuplicateStates(prgList);
+            oneStepForAllPrg(prgList);
+
         }
         executor.shutdownNow();
-
         // update the repository state
         repository.setPrgList(prgList);
     }
 
     public List<PrgState> removeCompletedPrograms(List<PrgState> prgList) {
         return prgList.stream().filter(PrgState::isNotCompleted).collect(Collectors.toList());
+    }
+
+    public List<PrgState> removeDuplicateStates(List<PrgState> prgList) {
+        return prgList.stream().distinct().collect(Collectors.toList());
     }
 }

@@ -40,8 +40,8 @@ public class Main {
         IStack<IStmt> stack8 = new Stackk<>();
         //test execution
         ExpressionsTest test = new ExpressionsTest();
-        test.ExecTest();
-        System.out.println("Tests done !\n");
+        //test.ExecTest();
+        //System.out.println("Tests done !\n");
         //Example1:
         //int v; v=2;
         IStmt ex1 = new CompStmt(new VarDeclStmt("v",new IntegerType()),
@@ -151,8 +151,8 @@ public class Main {
         menu.addCommand(new RunExample("4", ex4.toString(), controller4));
         menu.addCommand(new RunExample("5", ex5.toString(), controller5));
         menu.addCommand(new RunExample("6", ex6.toString(), controller6));
-        menu.addCommand(new RunExample("7", ex6.toString(), controller7));
-        menu.addCommand(new RunExample("8", ex6.toString(), controller8));
+        menu.addCommand(new RunExample("7", ex7.toString(), controller7));
+        menu.addCommand(new RunExample("8", ex8.toString(), controller8));
         menu.addCommand(new ExitCommand("9", "quit"));
         menu.show();
 

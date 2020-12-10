@@ -3,6 +3,8 @@ package Model.stmt;
 import Model.Exceptions.EXPException;
 import Model.Exceptions.STMTException;
 import Model.PrgState;
+import Model.Type.IType;
+import Model.adt.IDict;
 import Model.adt.IStack;
 
 public class CompStmt implements IStmt{
@@ -22,6 +24,11 @@ public class CompStmt implements IStmt{
         program_state.setExeStack(stk);
 
         return program_state;
+    }
+
+    @Override
+    public IDict<String, IType> typecheck(IDict<String, IType> typeEnvironment) throws STMTException, EXPException {
+        return second.typecheck(first.typecheck(typeEnvironment));
     }
 
     @Override

@@ -5,6 +5,7 @@ import Model.Exceptions.Custom_Exception;
 import Model.Exceptions.EXPException;
 import Model.Exceptions.STMTException;
 import Model.PrgState;
+import Model.Type.IType;
 import Model.Type.IntegerType;
 import Model.Type.StringType;
 import Model.Value.IValue;
@@ -69,6 +70,24 @@ public class ReadFileStmt implements IStmt{
         }
 
         return null;
+    }
+
+    @Override
+    public IDict<String, IType> typecheck(IDict<String, IType> typeEnvironment) throws STMTException, EXPException {
+        if (typeEnvironment.isDefined(name_var)) {
+            IType variableType = typeEnvironment.lookup(name_var);
+            IType expType = expression.typecheck(typeEnvironment);
+            if (!variableType.equals(new IntegerType())) {
+                throw new STMTException(this.toString() + " is not an integer !");
+            }
+            if (!expType.equals(new StringType())) {
+                throw new STMTException(this.toString() + " is not a string !");
+            }
+            return typeEnvironment;
+        }
+        else {
+            throw new STMTException(name_var + " is not defined !");
+        }
     }
 
     @Override

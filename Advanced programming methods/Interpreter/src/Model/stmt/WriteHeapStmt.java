@@ -5,6 +5,7 @@ import Model.Exceptions.Custom_Exception;
 import Model.Exceptions.EXPException;
 import Model.Exceptions.STMTException;
 import Model.PrgState;
+import Model.Type.IType;
 import Model.Type.RefType;
 import Model.Value.IValue;
 import Model.Value.RefValue;
@@ -51,6 +52,24 @@ public class WriteHeapStmt implements IStmt{
             throw new STMTException("Variable not defined before using !");
 
         return null;
+    }
+
+    @Override
+    public IDict<String, IType> typecheck(IDict<String, IType> typeEnvironment) throws STMTException, EXPException {
+        if (typeEnvironment.isDefined(variable)) {
+            IType variableType = typeEnvironment.lookup(variable);
+            IType expType = expression.typecheck(typeEnvironment);
+            if (!(variableType instanceof RefType)) {
+                throw new STMTException(this.toString() + " is not a string !");
+            }
+            if (!variableType.equals(new RefType(expType))) {
+                throw new STMTException("Right side has different type than left side !");
+            }
+            return typeEnvironment;
+        }
+        else {
+            throw new STMTException(variable + " is not defined !");
+        }
     }
 
     @Override

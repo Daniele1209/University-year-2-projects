@@ -17,4 +17,8 @@ public class IntegerType implements IType{
     public IValue def_val() {
         return new IntegerValue(0);
     }
+    @Override
+    public IType deepCopy() {
+        return new IntegerType();
+    }
 }

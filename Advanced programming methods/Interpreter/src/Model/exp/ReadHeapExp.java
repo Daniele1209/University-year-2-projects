@@ -1,6 +1,8 @@
 package Model.exp;
 
 import Model.Exceptions.EXPException;
+import Model.Type.IType;
+import Model.Type.RefType;
 import Model.Value.IValue;
 import Model.Value.RefValue;
 import Model.adt.IDict;
@@ -32,5 +34,17 @@ public class ReadHeapExp implements Exp{
     @Override
     public String toString() {
         return "rH (" + expression + ")";
+    }
+
+    @Override
+    public IType typecheck(IDict<String,IType> typeEnv) throws EXPException {
+        IType type = expression.typecheck(typeEnv);
+        if (type instanceof RefType) {
+            RefType refType = (RefType)type;
+            return refType.getInner();
+        }
+        else {
+            throw new EXPException("the rH argument is not a Ref Type");
+        }
     }
 }

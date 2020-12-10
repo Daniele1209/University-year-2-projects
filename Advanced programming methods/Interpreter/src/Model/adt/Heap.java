@@ -12,7 +12,7 @@ public class Heap<T> implements IHeap<T> {
     AtomicInteger location;
 
     public Heap() {
-        map = new HashMap<Integer, T>();
+        map = new ConcurrentHashMap<Integer, T>();
         location = new AtomicInteger(0);
     }
 

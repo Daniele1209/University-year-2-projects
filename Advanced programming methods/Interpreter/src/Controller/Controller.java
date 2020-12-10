@@ -104,7 +104,6 @@ public class Controller {
     }
 */
     void oneStepForAllPrg(List<PrgState> prgList) throws InterruptedException, Custom_Exception {
-        System.out.println(prgList);
         prgList.forEach(prg-> {
             try {
                 repository.printState(prg);
@@ -113,7 +112,7 @@ public class Controller {
             }
         });
         List <Callable<PrgState>> callList = prgList.stream()
-                .map((PrgState p)->(Callable<PrgState>)(p::oneStep))
+                .map((PrgState p)->(Callable<PrgState>)(() -> {return p.oneStep();}))
                 .collect(Collectors.toList());
         try {
             List<PrgState> newPrgList = executor.invokeAll(callList).stream()
@@ -121,11 +120,11 @@ public class Controller {
                         try {
                             return future.get();
                         } catch (ExecutionException | InterruptedException e) {
-                            //System.out.println(e.getMessage());
+                            System.out.println(e.getMessage());
                         }
                         return null;
                     })
-                    .filter(Objects::nonNull)
+                    .filter(p->p!=null)
                     .collect(Collectors.toList());
             prgList.addAll(newPrgList);
         }
@@ -144,16 +143,15 @@ public class Controller {
         repository.setPrgList(prgList);
     }
 
-    public void allStep() throws Custom_Exception, InterruptedException {
+    public void allStep() throws Custom_Exception, InterruptedException,  RuntimeException {
         executor = Executors.newFixedThreadPool(2);
         //remove the completed programs
         List<PrgState> prgList = removeCompletedPrograms(repository.getPrgList());
         while(prgList.size() > 0){
             garbageCollector(prgList);
+            oneStepForAllPrg(prgList);
             prgList=removeCompletedPrograms(repository.getPrgList());
             prgList=removeDuplicateStates(prgList);
-            oneStepForAllPrg(prgList);
-
         }
         executor.shutdownNow();
         // update the repository state

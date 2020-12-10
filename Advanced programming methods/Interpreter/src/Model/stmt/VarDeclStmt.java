@@ -35,6 +35,15 @@ public class VarDeclStmt implements IStmt {
     }
 
     @Override
+    public IDict<String, IType> typecheck(IDict<String, IType> typeEnvironment) throws STMTException, EXPException {
+        if (typeEnvironment.isDefined(name)) {
+            throw new STMTException("Variable already defined !");
+        }
+        typeEnvironment.update(name, type);
+        return typeEnvironment;
+    }
+
+    @Override
     public String toString() {
         return type + " " + name;
     }

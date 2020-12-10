@@ -56,4 +56,17 @@ public class Dict<T1,T2> implements IDict<T1,T2> {
     public Map<T1, T2> getMap() {
         return dictionary;
     }
+
+    @Override
+    public IDict<T1, T2> clone() {
+        Dict<T1,T2> clonedDict = new Dict<T1,T2>();
+
+        for(Map.Entry<T1,T2> entry : dictionary.entrySet()){
+            T1 key = entry.getKey();
+            T2 value = entry.getValue();
+
+            clonedDict.getMap().put(key, value);
+        }
+        return clonedDict;
+    }
 }

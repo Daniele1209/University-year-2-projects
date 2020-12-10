@@ -39,6 +39,22 @@ public class AssignStmt implements IStmt{
     }
 
     @Override
+    public IDict<String, IType> typecheck(IDict<String, IType> typeEnvironment) throws STMTException, EXPException {
+        if (!typeEnvironment.isDefined(id)) {
+            throw new STMTException("The variable " + id + " is not defined in the assignment statement " + this.toString());
+        }
+        else {
+            IType variableType = typeEnvironment.lookup(id);
+            IType expType = expression.typecheck(typeEnvironment);
+            if (variableType.equals(expType)) {
+                return typeEnvironment;
+            } else {
+                throw new STMTException("Assignment: right hand side and left hand side have different types");
+            }
+        }
+    }
+
+    @Override
     public String toString() {
         return (id + " = " + expression.toString());
     }

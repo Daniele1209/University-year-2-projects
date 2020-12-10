@@ -4,8 +4,10 @@ import Model.Exceptions.EXPException;
 import Model.Exceptions.STMTException;
 import Model.PrgState;
 import Model.Type.BoolType;
+import Model.Type.IType;
 import Model.Value.BoolValue;
 import Model.Value.IValue;
+import Model.adt.IDict;
 import Model.adt.IStack;
 import Model.exp.Exp;
 
@@ -37,6 +39,19 @@ public class IfStmt implements IStmt{
 
         program_state.setExeStack(stk);
         return program_state;
+    }
+
+    @Override
+    public IDict<String, IType> typecheck(IDict<String, IType> typeEnvironment) throws STMTException, EXPException {
+        IType expType = expression.typecheck(typeEnvironment);
+        if (expType.equals(new BoolType())) {
+            then_statement.typecheck(typeEnvironment);
+            else_statement.typecheck(typeEnvironment);
+            return typeEnvironment;
+        }
+        else {
+            throw new STMTException("Condition is not a boolean");
+        }
     }
 
     @Override

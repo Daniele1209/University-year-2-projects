@@ -1,6 +1,9 @@
 package Model.adt;
 import Model.Exceptions.ADTException;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 public class Stackk<T> implements IStack<T> {
@@ -25,6 +28,13 @@ public class Stackk<T> implements IStack<T> {
     @Override
     public boolean isEmpty() {
         return stack.isEmpty();
+    }
+
+    @Override
+    public List<T> toList() {
+        List<T> list = new ArrayList<>(stack);
+        Collections.reverse(list);
+        return list;
     }
 
     @Override

@@ -37,4 +37,8 @@ public class IntegerValue implements IValue {
         return Integer.toString(value);
     }
 
+    @Override
+    public IValue deepCopy() {
+        return new IntegerValue(value);
+    }
 }

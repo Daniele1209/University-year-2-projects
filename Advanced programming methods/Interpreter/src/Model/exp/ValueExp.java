@@ -1,4 +1,5 @@
 package Model.exp;
+import Model.Type.IType;
 import Model.Value.IValue;
 import Model.Exceptions.EXPException;
 import Model.adt.IDict;
@@ -19,5 +20,10 @@ public class ValueExp implements Exp{
     @Override
     public String toString() {
         return v.toString();
+    }
+
+    @Override
+    public IType typecheck(IDict<String,IType> typeEnv) throws EXPException {
+        return v.getType();
     }
 }

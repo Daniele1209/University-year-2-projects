@@ -5,6 +5,7 @@ import Model.Exceptions.Custom_Exception;
 import Model.Exceptions.EXPException;
 import Model.Exceptions.STMTException;
 import Model.PrgState;
+import Model.Type.IType;
 import Model.Value.IValue;
 import Model.Value.StringValue;
 import Model.adt.*;
@@ -20,20 +21,21 @@ public class ForkStmt implements IStmt {
     }
 
     @Override
-    public PrgState execute(PrgState program_state) throws STMTException {
-        IDict<String, IValue> symTable = program_state.getSymTable();
-        IStack<IStmt> stack = program_state.getStack();
-        IList<IValue> out = program_state.getOut();
-        IDict<StringValue, BufferedReader> file_tbl = program_state.getFileTable();
-        IHeap<IValue> heap = program_state.getHeap();
-        Stackk<IStmt>  new_stack = new Stackk<IStmt>();
-        Dict<String, IValue> new_table = new Dict<String, IValue>();
-
-        for(Map.Entry<String, IValue> obj : symTable.getMap().entrySet()) {
-            new_table.update(new String(obj.getKey()), obj.getValue());
+    public PrgState execute(PrgState program_state) throws ADTException {
+        IDict<String, IValue> new_table = new Dict<>();
+        for (Map.Entry<String, IValue> entry: program_state.getSymTable().getMap().entrySet()) {
+            new_table.add(entry.getKey(), entry.getValue().deepCopy());
         }
+        IStack <IStmt> stack = new Stackk<>();
+        stack.push(stmt);
+        PrgState new_program = new PrgState(stack, new_table, program_state.getOut(), program_state.getFileTable(), program_state.getHeap());
+        return new_program;
+    }
 
-        return new PrgState(new_stack, new_table, out, file_tbl, heap, stmt);
+    @Override
+    public IDict<String, IType> typecheck(IDict<String, IType> typeEnvironment) throws STMTException, EXPException {
+        stmt.typecheck(typeEnvironment);
+        return typeEnvironment;
     }
 
     @Override

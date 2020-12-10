@@ -36,4 +36,8 @@ public class BoolValue implements IValue {
         return value ? "true" : "false";
     }
 
+    @Override
+    public IValue deepCopy() {
+        return new BoolValue(value);
+    }
 }

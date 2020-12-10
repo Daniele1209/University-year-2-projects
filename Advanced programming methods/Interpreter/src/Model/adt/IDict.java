@@ -13,4 +13,5 @@ public interface IDict<T1,T2>{
     void remove(T1 id) throws ADTException;
     String toString();
     Map<T1, T2> getMap();
+    IDict<T1, T2> clone();
 }

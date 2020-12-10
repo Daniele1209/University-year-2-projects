@@ -16,8 +16,9 @@ Output:
 ID: 
 8
 Stack: 
+integer v;
 v = 2;
-print(v) integer v 
+print(v) 
 Sym table: 
 
 Heap: 
@@ -31,9 +32,9 @@ ID:
 8
 Stack: 
 v = 2;
-print(v) integer v 
+print(v) 
 Sym table: 
-
+v-0 
 Heap: 
 
 File table: 
@@ -45,9 +46,9 @@ ID:
 8
 Stack: 
 v = 2;
-print(v) integer v 
+print(v) 
 Sym table: 
-
+v-0 
 Heap: 
 
 File table: 

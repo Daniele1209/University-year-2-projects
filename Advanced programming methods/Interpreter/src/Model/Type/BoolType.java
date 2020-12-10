@@ -17,4 +17,9 @@ public class BoolType implements IType{
         return new BoolValue(false);
     }
 
+    @Override
+    public IType deepCopy() {
+        return new BoolType();
+    }
+
 }

@@ -27,6 +27,7 @@ public class Repo implements IRepo {
         } catch (IOException err) {
             throw new Custom_Exception(err.getMessage());
         }
+        myPrgStates.add(program_state);
     }
 
     @Override

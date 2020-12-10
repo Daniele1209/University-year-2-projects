@@ -39,4 +39,9 @@ public class StringValue implements IValue{
     public String toString() {
         return string;
     }
+
+    @Override
+    public IValue deepCopy() {
+        return new StringValue(string);
+    }
 }

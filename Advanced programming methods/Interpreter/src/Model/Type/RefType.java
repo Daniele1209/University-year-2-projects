@@ -34,4 +34,9 @@ public class RefType implements IType{
     public String toString() {
         return "Ref (" + inner + ")";
     }
+
+    @Override
+    public IType deepCopy() {
+        return new RefType(inner.deepCopy());
+    }
 }

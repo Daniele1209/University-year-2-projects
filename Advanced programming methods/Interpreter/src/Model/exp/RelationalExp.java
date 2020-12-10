@@ -1,6 +1,8 @@
 package Model.exp;
 
 import Model.Exceptions.EXPException;
+import Model.Type.BoolType;
+import Model.Type.IType;
 import Model.Type.IntegerType;
 import Model.Value.BoolValue;
 import Model.Value.IValue;
@@ -55,5 +57,23 @@ public class RelationalExp implements Exp{
     @Override
     public String toString() {
         return expression1 + " " + op + " " + expression2;
+    }
+
+    @Override
+    public IType typecheck(IDict<String,IType> typeEnv) throws EXPException {
+        IType type1 = expression1.typecheck(typeEnv);
+        IType type2 = expression2.typecheck(typeEnv);
+
+        if (type1.equals(new IntegerType())) {
+            if (type2.equals(new IntegerType())) {
+                return new BoolType();
+            }
+            else {
+                throw new EXPException("second operand is not an integer");
+            }
+        }
+        else {
+            throw new EXPException("first operand is not an integer");
+        }
     }
 }

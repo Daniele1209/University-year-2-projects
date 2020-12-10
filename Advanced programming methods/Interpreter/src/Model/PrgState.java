@@ -5,13 +5,10 @@ import Model.Exceptions.EXPException;
 import Model.Exceptions.STMTException;
 import Model.Value.IValue;
 import Model.Value.StringValue;
-import Model.adt.IDict;
-import Model.adt.IHeap;
-import Model.adt.IList;
-import Model.adt.IStack;
+import Model.adt.*;
 import Model.stmt.IStmt;
-
 import java.io.BufferedReader;
+import java.util.Objects;
 
 public class PrgState {
 
@@ -31,8 +28,17 @@ public class PrgState {
         file_table = fileTable;
         originalProgram = program_state;
         this.heap = heap;
-        exeStack.push(program_state);
         id = newId();
+        exeStack.push(program_state);
+    }
+
+    public PrgState(IStack<IStmt> stack, IDict<String, IValue> SymTable, IList<IValue> Out, IDict<StringValue, BufferedReader> fileTable, IHeap<IValue> heap) {
+        exeStack = stack;
+        symTable = SymTable;
+        out = Out;
+        file_table = fileTable;
+        this.heap = heap;
+        id = PrgState.newId();
     }
 
     //getters
@@ -85,15 +91,16 @@ public class PrgState {
     }
 
     public static synchronized int newId() {
-        ++free_id;
+        free_id++;
         return free_id;
     }
 
     public PrgState oneStep() throws Custom_Exception, ADTException, EXPException, STMTException {
+        Stackk<IStmt> stk = (Stackk<IStmt>) this.getStack();
         if (exeStack.isEmpty()) {
             throw new Custom_Exception("Program stack is empty");
         }
-        IStmt currentStatement = exeStack.pop();
+        IStmt currentStatement = stk.pop();
         return currentStatement.execute(this);
     }
 
@@ -103,15 +110,15 @@ public class PrgState {
         final_string.append("ID: \n");
         final_string.append(id).append("\n");
         final_string.append("Stack: \n");
-        final_string.append(exeStack).append("\n");
+        final_string.append(exeStack.toString()).append("\n");
         final_string.append("Sym table: \n");
-        final_string.append(symTable).append("\n");
+        final_string.append(symTable.toString()).append("\n");
         final_string.append("Heap: \n");
-        final_string.append(heap).append("\n");
+        final_string.append(heap.toString()).append("\n");
         final_string.append("File table: \n");
-        final_string.append(file_table).append("\n");
+        final_string.append(file_table.toString()).append("\n");
         final_string.append("Output: \n");
-        final_string.append(out).append("\n");
+        final_string.append(out.toString()).append("\n");
 
         return final_string.toString();
     }

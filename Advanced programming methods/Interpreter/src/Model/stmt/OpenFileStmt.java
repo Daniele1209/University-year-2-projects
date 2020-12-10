@@ -5,6 +5,7 @@ import Model.Exceptions.Custom_Exception;
 import Model.Exceptions.EXPException;
 import Model.Exceptions.STMTException;
 import Model.PrgState;
+import Model.Type.IType;
 import Model.Type.StringType;
 import Model.Value.IValue;
 import Model.Value.StringValue;
@@ -47,6 +48,17 @@ public class OpenFileStmt implements IStmt{
             throw new STMTException("Not a string !");
         }
         return null;
+    }
+
+    @Override
+    public IDict<String, IType> typecheck(IDict<String, IType> typeEnvironment) throws STMTException, EXPException {
+        IType expType = expression.typecheck(typeEnvironment);
+        if (expType.equals(new StringType())) {
+            return typeEnvironment;
+        }
+        else {
+            throw new STMTException(this.toString() + " is not a string !");
+        }
     }
 
     @Override

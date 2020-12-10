@@ -3,7 +3,9 @@ package Model.stmt;
 import Model.Exceptions.EXPException;
 import Model.Exceptions.STMTException;
 import Model.PrgState;
+import Model.Type.IType;
 import Model.Value.IValue;
+import Model.adt.IDict;
 import Model.adt.IList;
 import Model.adt.IStack;
 import Model.exp.Exp;
@@ -25,6 +27,12 @@ public class PrintStmt implements IStmt{
         program_state.setOut(out);
 
         return program_state;
+    }
+
+    @Override
+    public IDict<String, IType> typecheck(IDict<String, IType> typeEnvironment) throws STMTException, EXPException {
+        expression.typecheck(typeEnvironment);
+        return typeEnvironment;
     }
 
     @Override

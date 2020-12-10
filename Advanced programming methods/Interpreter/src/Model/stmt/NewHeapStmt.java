@@ -5,6 +5,7 @@ import Model.Exceptions.Custom_Exception;
 import Model.Exceptions.EXPException;
 import Model.Exceptions.STMTException;
 import Model.PrgState;
+import Model.Type.IType;
 import Model.Type.RefType;
 import Model.Value.IValue;
 import Model.Value.RefValue;
@@ -33,7 +34,7 @@ public class NewHeapStmt implements IStmt{
                 IValue table_value = symTable.lookup(variable);
                 IValue value = expression.eval(symTable, heap);
 
-                if (value.getType().equals(((RefType) (table_value.getType())).getInner())) {
+                if (value.getType().equals(((RefType)(table_value.getType())).getInner())) {
                     int address = heap.allocate(value);
                     symTable.update(variable, new RefValue(value.getType(), address));
                 } else
@@ -52,8 +53,25 @@ public class NewHeapStmt implements IStmt{
     }
 
     @Override
+    public IDict<String, IType> typecheck(IDict<String, IType> typeEnvironment) throws STMTException, EXPException {
+        if (!typeEnvironment.isDefined(variable)) {
+            throw new STMTException(variable + " is not defined !");
+        }
+        else {
+            IType variableType = typeEnvironment.lookup(variable);
+            IType expType = expression.typecheck(typeEnvironment);
+            if (variableType.equals(new RefType(expType))) {
+                return typeEnvironment;
+            }
+            else {
+                throw new STMTException("Right side and left side have different types !");
+            }
+        }
+    }
+
+    @Override
     public String toString() {
-        return "new (" + variable + expression + ")";
+        return "new (" + variable + " , " + expression + ")";
     }
 
 }

@@ -5,6 +5,7 @@ import Model.Exceptions.Custom_Exception;
 import Model.Exceptions.EXPException;
 import Model.Exceptions.STMTException;
 import Model.PrgState;
+import Model.Type.IType;
 import Model.Type.StringType;
 import Model.Value.IValue;
 import Model.Value.StringValue;
@@ -48,6 +49,17 @@ public class CloseFileStmt implements IStmt{
             throw new STMTException("Evaluation failed !");
         }
         return null;
+    }
+
+    @Override
+    public IDict<String, IType> typecheck(IDict<String, IType> typeEnvironment) throws STMTException, EXPException {
+        IType expType = expression.typecheck(typeEnvironment);
+        if (expType.equals(new StringType())) {
+            return typeEnvironment;
+        }
+        else {
+            throw new STMTException("Close file expression is not a string");
+        }
     }
 
     @Override

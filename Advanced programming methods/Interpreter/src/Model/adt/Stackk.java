@@ -41,8 +41,8 @@ public class Stackk<T> implements IStack<T> {
     public String toString() {
         StringBuilder final_string = new StringBuilder();
         for(T elem : stack) {
-            final_string.append(elem);
-            final_string.append(" ");
+            final_string.append(elem.toString());
+            final_string.append("\n");
         }
         return final_string.toString();
     }

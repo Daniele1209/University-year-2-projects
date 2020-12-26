@@ -18,7 +18,7 @@ public class PrgState {
     IStmt originalProgram; //optional field, but good to have
     IDict<StringValue, BufferedReader> file_table;
     IHeap<IValue> heap;
-    static int id;
+    int id;
     static int free_id = 0;
 
     public PrgState(IStack<IStmt> stack, IDict<String, IValue> SymTable, IList<IValue> Out, IDict<StringValue, BufferedReader> fileTable, IHeap<IValue> heap, IStmt program_state) {
@@ -38,7 +38,7 @@ public class PrgState {
         out = Out;
         file_table = fileTable;
         this.heap = heap;
-        id = PrgState.newId();
+        id = newId();
     }
 
     //getters
@@ -64,6 +64,10 @@ public class PrgState {
 
     public IHeap<IValue> getHeap() {
         return heap;
+    }
+
+    public int getId() {
+        return id;
     }
     //setters
     public void setExeStack(IStack<IStmt> stack) {
@@ -91,16 +95,15 @@ public class PrgState {
     }
 
     public static synchronized int newId() {
-        free_id++;
+        ++free_id;
         return free_id;
     }
 
     public PrgState oneStep() throws Custom_Exception, ADTException, EXPException, STMTException {
-        Stackk<IStmt> stk = (Stackk<IStmt>) this.getStack();
         if (exeStack.isEmpty()) {
             throw new Custom_Exception("Program stack is empty");
         }
-        IStmt currentStatement = stk.pop();
+        IStmt currentStatement = exeStack.pop();
         return currentStatement.execute(this);
     }
 

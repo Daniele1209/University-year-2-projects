@@ -26,7 +26,7 @@ public class PrintStmt implements IStmt{
         program_state.setExeStack(stk);
         program_state.setOut(out);
 
-        return program_state;
+        return null;
     }
 
     @Override

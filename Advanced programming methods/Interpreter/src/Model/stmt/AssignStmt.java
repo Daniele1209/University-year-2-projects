@@ -35,7 +35,7 @@ public class AssignStmt implements IStmt{
         else
             throw new STMTException(id + " variable not declared before !");
         program_state.setSymTable(symTable);
-        return program_state;
+        return null;
     }
 
     @Override

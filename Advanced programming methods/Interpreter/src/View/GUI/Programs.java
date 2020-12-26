@@ -1,7 +1,11 @@
+package View.GUI;
+
+import Controller.Controller;
 import Model.Exceptions.ADTException;
 import Model.Exceptions.Custom_Exception;
 import Model.Exceptions.EXPException;
 import Model.Exceptions.STMTException;
+import Model.PrgState;
 import Model.Type.*;
 import Model.Value.BoolValue;
 import Model.Value.IValue;
@@ -12,82 +16,84 @@ import Model.exp.*;
 import Model.stmt.*;
 import Repository.IRepo;
 import Repository.Repo;
-import Controller.Controller;
-import Model.PrgState;
-import Tests.ExpressionsTest;
-import View.ExitCommand;
-import View.RunExample;
-import View.TextMenu;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.time.temporal.ValueRange;
-import java.util.Scanner;
-import java.util.concurrent.CompletionStage;
+import java.util.LinkedList;
 
-public class Main {
 
-    public static void main(String[] args) throws STMTException, ADTException, Custom_Exception, EXPException, IOException {
-        IStack<IStmt> stack1 = new Stackk<>();
-        IStack<IStmt> stack2 = new Stackk<>();
-        IStack<IStmt> stack3 = new Stackk<>();
-        IStack<IStmt> stack4 = new Stackk<>();
-        IStack<IStmt> stack5 = new Stackk<>();
-        IStack<IStmt> stack6 = new Stackk<>();
-        IStack<IStmt> stack7 = new Stackk<>();
-        IStack<IStmt> stack8 = new Stackk<>();
-        //test execution
-        //ExpressionsTest test = new ExpressionsTest();
-        //test.ExecTest();
-        //System.out.println("Tests done !\n");
-        //Example1:
-        //int v; v=2;
+public class Programs {
+    @FXML
+    private ListView<Controller> programsList;
+
+    @FXML
+    private Button runProgram;
+
+    @FXML
+    public void initialize() throws ADTException {
+        programsList.setItems(getControllers());
+        programsList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
+
+    private ObservableList<Controller> getControllers() throws ADTException {
+        Listt<IStmt> stmts = getExampleList();
+        LinkedList<Controller> list = new LinkedList<Controller>();
+        for(int i = 0; i <= stmts.size()-1; i++) {
+            try{
+                IStack<IStmt> stack = new Stackk<>();
+                PrgState state = new PrgState(stack, new Dict<String, IValue>(), new Listt<IValue>(), new Dict<StringValue, BufferedReader>(), new Heap<>(), stmts.get(i));
+                Repo repository = new Repo(state, "log" + String.valueOf(i+1) + ".txt");
+                Controller controller = new Controller(repository);
+                list.add(controller);
+            }catch(ADTException | Custom_Exception | IOException err) {
+                err.printStackTrace();
+            }
+        }
+        return FXCollections.observableArrayList(list);
+    }
+
+
+    public Listt<IStmt> getExampleList() {
+        Listt<IStmt> exList = new Listt<IStmt>();
+
         IStmt ex1 = new CompStmt(new VarDeclStmt("v",new IntegerType()),
                 new CompStmt(new AssignStmt("v",new ValueExp(new IntegerValue(2))),
                         new PrintStmt(new VarExp("v"))));
-        ex1.typecheck(new Dict<String, IType>());
-        PrgState program1 = new PrgState(stack1, new Dict<String, IValue>(), new Listt<IValue>(), new Dict<StringValue, BufferedReader>(), new Heap<>(),  ex1);
-        IRepo repository1 = new Repo(program1,"log1.txt");
-        Controller controller1 = new Controller(repository1);
+        exList.add(ex1);
 
-        //Example2:
-        //int a;int b;
-        //a=2+3*5;b=a+1;
         IStmt ex2 = new CompStmt( new VarDeclStmt("a",new IntegerType()),
                 new CompStmt(new VarDeclStmt("b",new IntegerType()),
                         new CompStmt(new AssignStmt("a", new ArithExp('+', new ValueExp(new IntegerValue(2)),
                                 new ArithExp('*',new ValueExp(new IntegerValue(3)), new ValueExp(new IntegerValue(5))))),
                                 new CompStmt(new AssignStmt("b",new ArithExp('+',new VarExp("a"), new ValueExp(new IntegerValue(1)))),
                                         new PrintStmt(new VarExp("b"))))));
-        ex2.typecheck(new Dict<String, IType>());
-        PrgState program2 = new PrgState(stack2, new Dict<String, IValue>(), new Listt<IValue>(), new Dict<StringValue, BufferedReader>(),new Heap<>(), ex2);
-        IRepo repository2 = new Repo(program2,"log2.txt");
-        Controller controller2 = new Controller(repository2);
+        exList.add(ex2);
 
-        //Example3:
-        //bool a; int v; a=true;
-        //(If a Then v=2 Else v=3);
         IStmt ex3 = new CompStmt(new VarDeclStmt("a",new BoolType()),
                 new CompStmt(new VarDeclStmt("v", new IntegerType()),
                         new CompStmt(new AssignStmt("a", new ValueExp(new BoolValue(true))),
                                 new CompStmt(new IfStmt(new VarExp("a"),new AssignStmt("v",new ValueExp(new IntegerValue(2))),
                                         new AssignStmt("v", new ValueExp(new IntegerValue(3)))), new PrintStmt(new VarExp("v"))))));
-        ex3.typecheck(new Dict<String, IType>());
-        PrgState program3 = new PrgState(stack3, new Dict<String, IValue>(), new Listt<IValue>(), new Dict<StringValue, BufferedReader>(),new Heap<>(), ex3);
-        IRepo repository3 = new Repo(program3,"log3.txt");
-        Controller controller3 = new Controller(repository3);
+        exList.add(ex3);
 
-        //Example4:
-        //int a;int b;
-        //a=10;b=a/0;
         IStmt ex4 = new CompStmt(new VarDeclStmt("a", new IntegerType()),
                 new CompStmt(new VarDeclStmt("b", new IntegerType()),
                         new CompStmt(new AssignStmt("a", new ValueExp(new IntegerValue(10))),
                                 new CompStmt(new AssignStmt("b", new ArithExp('/', new VarExp("a"), new ValueExp(new IntegerValue(0)))),
                                         new PrintStmt(new VarExp("a"))))));
-        ex4.typecheck(new Dict<String, IType>());
-        PrgState program4 = new PrgState(stack4, new Dict<String, IValue>(), new Listt<IValue>(), new Dict<StringValue, BufferedReader>(),new Heap<>(), ex4);
-        IRepo repository4 = new Repo(program4,"log4.txt");
-        Controller controller4 = new Controller(repository4);
+        exList.add(ex4);
 
         IStmt ex5 = new CompStmt(
                 new VarDeclStmt("varf", new StringType()),
@@ -99,10 +105,7 @@ public class Main {
                                                         new CompStmt(new ReadFileStmt(new VarExp("varf"), "varc"),
                                                                 new CompStmt(new PrintStmt(new VarExp("varc")),
                                                                         new CloseFileStmt(new VarExp("varf"))))))))));
-        ex5.typecheck(new Dict<String, IType>());
-        PrgState program5 = new PrgState(stack5, new Dict<String, IValue>(), new Listt<IValue>(), new Dict<StringValue, BufferedReader>(),new Heap<>(), ex5);
-        IRepo repository5 = new Repo(program5,"log5.txt");
-        Controller controller5 = new Controller(repository5);
+        exList.add(ex5);
 
         IStmt ex6 = new CompStmt(new VarDeclStmt("v", new IntegerType()),
                 new CompStmt(new AssignStmt("v", new ValueExp(new IntegerValue(4))),
@@ -110,10 +113,7 @@ public class Main {
                                 new CompStmt(new PrintStmt(new VarExp("v")), new AssignStmt("v", new ArithExp('-', new VarExp("v"),
                                         new ValueExp(new IntegerValue(1)))))),
                                 new PrintStmt(new VarExp("v")))));
-        ex6.typecheck(new Dict<String, IType>());
-        PrgState program6 = new PrgState(stack6, new Dict<String, IValue>(), new Listt<IValue>(), new Dict<StringValue, BufferedReader>(),new Heap<>(), ex6);
-        IRepo repository6 = new Repo(program6,"log6.txt");
-        Controller controller6 = new Controller(repository6);
+        exList.add(ex6);
 
         IStmt ex7 = new CompStmt(new VarDeclStmt("v", new RefType(new IntegerType())),
                 new CompStmt(new NewHeapStmt("v", new ValueExp(new IntegerValue(20))),
@@ -122,10 +122,7 @@ public class Main {
                                         new CompStmt(new PrintStmt(new ReadHeapExp(new VarExp("v"))),
                                                 new PrintStmt(new ArithExp('+', new ReadHeapExp(new ReadHeapExp(new VarExp("a"))),
                                                         new ValueExp(new IntegerValue(5)))))))));
-        ex7.typecheck(new Dict<String, IType>());
-        PrgState program7 = new PrgState(stack7, new Dict<String, IValue>(), new Listt<IValue>(), new Dict<StringValue, BufferedReader>(),new Heap<>(), ex7);
-        IRepo repository7 = new Repo(program7,"log7.txt");
-        Controller controller7 = new Controller(repository7);
+        exList.add(ex7);
 
         IStmt ex8 = new CompStmt(new VarDeclStmt("v", new IntegerType()),
                 new CompStmt(new VarDeclStmt("a", new RefType(new IntegerType())),
@@ -135,31 +132,32 @@ public class Main {
                                                 new CompStmt(new AssignStmt("v", new ValueExp(new IntegerValue(32))),
                                                         new CompStmt(new PrintStmt(new VarExp("v")), new PrintStmt(new ReadHeapExp(new VarExp("a"))))))),
                                                 new CompStmt(new PrintStmt(new VarExp("v")), new PrintStmt(new ReadHeapExp(new VarExp("a")))))))));
-        ex8.typecheck(new Dict<String, IType>());
-        PrgState program8 = new PrgState(stack8, new Dict<String, IValue>(), new Listt<IValue>(), new Dict<StringValue, BufferedReader>(),new Heap<>(), ex8);
-        IRepo repository8 = new Repo(program8,"log8.txt");
-        Controller controller8 = new Controller(repository8);
+        exList.add(ex8);
 
-        TextMenu menu = new TextMenu();
-        repository1.addPrg(program1);
-        repository2.addPrg(program2);
-        repository3.addPrg(program3);
-        repository4.addPrg(program4);
-        repository5.addPrg(program5);
-        repository6.addPrg(program6);
-        repository7.addPrg(program7);
-        repository8.addPrg(program8);
+        return exList;
+    }
 
-        menu.addCommand(new RunExample("1", ex1.toString(), controller1));
-        menu.addCommand(new RunExample("2", ex2.toString(), controller2));
-        menu.addCommand(new RunExample("3", ex3.toString(), controller3));
-        menu.addCommand(new RunExample("4", ex4.toString(), controller4));
-        menu.addCommand(new RunExample("5", ex5.toString(), controller5));
-        menu.addCommand(new RunExample("6", ex6.toString(), controller6));
-        menu.addCommand(new RunExample("7", ex7.toString(), controller7));
-        menu.addCommand(new RunExample("8", ex8.toString(), controller8));
-        menu.addCommand(new ExitCommand("9", "quit"));
-        menu.show();
-
+    @FXML
+    public void startProgram(javafx.event.ActionEvent event) {
+        Controller controller = programsList.getSelectionModel().getSelectedItem();
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("Execution.fxml"));
+            Execution execController = new Execution(controller);
+            loader.setController(execController);
+            StackPane executorRoot = loader.load();
+            Scene executorScene = new Scene(executorRoot, 1350, 800);
+            Stage executorStage = new Stage();
+            executorStage.setScene(executorScene);
+            executorStage.setTitle("Program Execution");
+            executorStage.show();
+        } catch (IOException err) {
+            err.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("IOException Error !");
+            alert.setHeaderText("IOException Error !");
+            alert.setContentText(err.toString());
+            alert.showAndWait();
+        }
     }
 }

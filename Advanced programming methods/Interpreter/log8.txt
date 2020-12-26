@@ -1,7 +1,6 @@
  ID: 
 8
 Stack: 
-integer v;
 Ref (integer) a;
 v = 10;
 new (a , 22);
@@ -10,29 +9,9 @@ v = 32;
 print(v);
 print(rH (a)));
 print(v);
-print(rH (a)) 
-Sym table: 
+print(rH (a))
+integer v
 
-Heap: 
-
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-integer v;
-Ref (integer) a;
-v = 10;
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) 
 Sym table: 
 
 Heap: 
@@ -53,91 +32,8 @@ v = 32;
 print(v);
 print(rH (a)));
 print(v);
-print(rH (a)) 
-Sym table: 
-v-0 
-Heap: 
+print(rH (a))
 
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-Ref (integer) a;
-v = 10;
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) 
-Sym table: 
-v-0 
-Heap: 
-
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-Ref (integer) a;
-v = 10;
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) 
-Sym table: 
-v-0 
-Heap: 
-
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-Ref (integer) a;
-v = 10;
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) 
-Sym table: 
-v-0 
-Heap: 
-
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-Ref (integer) a;
-v = 10;
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) 
 Sym table: 
 v-0 
 Heap: 
@@ -157,7 +53,9 @@ v = 32;
 print(v);
 print(rH (a)));
 print(v);
-print(rH (a)) Ref (integer) a 
+print(rH (a))
+Ref (integer) a
+
 Sym table: 
 v-0 
 Heap: 
@@ -177,87 +75,8 @@ v = 32;
 print(v);
 print(rH (a)));
 print(v);
-print(rH (a)) Ref (integer) a 
-Sym table: 
-v-0 
-Heap: 
+print(rH (a))
 
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-v = 10;
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) Ref (integer) a 
-Sym table: 
-v-0 
-Heap: 
-
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-v = 10;
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) 
-Sym table: 
-a-(0, integer) v-0 
-Heap: 
-
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-v = 10;
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) 
-Sym table: 
-a-(0, integer) v-0 
-Heap: 
-
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-v = 10;
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) 
 Sym table: 
 a-(0, integer) v-0 
 Heap: 
@@ -276,7 +95,9 @@ v = 32;
 print(v);
 print(rH (a)));
 print(v);
-print(rH (a)) v = 10 
+print(rH (a))
+v = 10
+
 Sym table: 
 a-(0, integer) v-0 
 Heap: 
@@ -295,83 +116,8 @@ v = 32;
 print(v);
 print(rH (a)));
 print(v);
-print(rH (a)) v = 10 
-Sym table: 
-a-(0, integer) v-0 
-Heap: 
+print(rH (a))
 
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) v = 10 
-Sym table: 
-a-(0, integer) v-0 
-Heap: 
-
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) 
-Sym table: 
-a-(0, integer) v-10 
-Heap: 
-
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) 
-Sym table: 
-a-(0, integer) v-10 
-Heap: 
-
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) 
 Sym table: 
 a-(0, integer) v-10 
 Heap: 
@@ -389,7 +135,9 @@ v = 32;
 print(v);
 print(rH (a)));
 print(v);
-print(rH (a)) new (a , 22) 
+print(rH (a))
+new (a , 22)
+
 Sym table: 
 a-(0, integer) v-10 
 Heap: 
@@ -407,11 +155,12 @@ v = 32;
 print(v);
 print(rH (a)));
 print(v);
-print(rH (a)) new (a , 22) 
-Sym table: 
-a-(0, integer) v-10 
-Heap: 
+print(rH (a))
 
+Sym table: 
+a-(1, integer) v-10 
+Heap: 
+1-22 
 File table: 
 
 Output: 
@@ -420,66 +169,13 @@ Output:
 ID: 
 8
 Stack: 
+print(v);
+print(rH (a))
 fork (wH (a ; 30);
 v = 32;
 print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) new (a , 22) 
-Sym table: 
-a-(0, integer) v-10 
-Heap: 
+print(rH (a)))
 
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a)) 
 Sym table: 
 a-(1, integer) v-10 
 Heap: 
@@ -493,58 +189,8 @@ ID:
 8
 Stack: 
 print(v);
-print(rH (a)) fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a))) 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
+print(rH (a))
 
-Output: 
-
-
-ID: 
-8
-Stack: 
-print(v);
-print(rH (a)) fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a))) 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-print(v);
-print(rH (a)) fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a))) 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
-
-Output: 
-
-
-ID: 
-9
-Stack: 
-print(v);
-print(rH (a)) 
 Sym table: 
 a-(1, integer) v-10 
 Heap: 
@@ -560,7 +206,8 @@ Stack:
 wH (a ; 30);
 v = 32;
 print(v);
-print(rH (a)) 
+print(rH (a))
+
 Sym table: 
 a-(1, integer) v-10 
 Heap: 
@@ -571,39 +218,11 @@ Output:
 
 
 ID: 
-9
+8
 Stack: 
-print(v);
-print(rH (a)) 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
+print(rH (a))
+print(v)
 
-Output: 
-
-
-ID: 
-9
-Stack: 
-wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)) 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
-
-Output: 
-
-
-ID: 
-9
-Stack: 
-print(rH (a)) print(v) 
 Sym table: 
 a-(1, integer) v-10 
 Heap: 
@@ -618,7 +237,9 @@ ID:
 Stack: 
 v = 32;
 print(v);
-print(rH (a)) wH (a ; 30) 
+print(rH (a))
+wH (a ; 30)
+
 Sym table: 
 a-(1, integer) v-10 
 Heap: 
@@ -629,65 +250,10 @@ Output:
 
 
 ID: 
-9
+8
 Stack: 
-print(rH (a)) print(v) 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
+print(rH (a))
 
-Output: 
-
-
-ID: 
-9
-Stack: 
-v = 32;
-print(v);
-print(rH (a)) wH (a ; 30) 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
-
-Output: 
-
-
-ID: 
-9
-Stack: 
-print(rH (a)) print(v) 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
-
-Output: 
-
-
-ID: 
-9
-Stack: 
-v = 32;
-print(v);
-print(rH (a)) wH (a ; 30) 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
-
-Output: 
-
-
-ID: 
-9
-Stack: 
-print(rH (a)) 
 Sym table: 
 a-(1, integer) v-10 
 Heap: 
@@ -702,7 +268,8 @@ ID:
 Stack: 
 v = 32;
 print(v);
-print(rH (a)) 
+print(rH (a))
+
 Sym table: 
 a-(1, integer) v-10 
 Heap: 
@@ -713,48 +280,7 @@ Output:
 10 
 
 ID: 
-9
-Stack: 
-print(rH (a)) 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 
-
-ID: 
-9
-Stack: 
-print(rH (a)) 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 
-
-ID: 
-9
-Stack: 
-v = 32;
-print(v);
-print(rH (a)) 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 
-
-ID: 
-9
+8
 Stack: 
 
 Sym table: 
@@ -770,19 +296,8 @@ ID:
 9
 Stack: 
 print(v);
-print(rH (a)) v = 32 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 30 
-
-ID: 
-9
-Stack: 
+print(rH (a))
+v = 32
 
 Sym table: 
 a-(1, integer) v-10 
@@ -797,35 +312,8 @@ ID:
 9
 Stack: 
 print(v);
-print(rH (a)) v = 32 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-30 
-File table: 
+print(rH (a))
 
-Output: 
-10 30 
-
-ID: 
-9
-Stack: 
-print(v);
-print(rH (a)) v = 32 
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 30 
-
-ID: 
-9
-Stack: 
-print(v);
-print(rH (a)) 
 Sym table: 
 a-(1, integer) v-32 
 Heap: 
@@ -838,8 +326,9 @@ Output:
 ID: 
 9
 Stack: 
-print(v);
-print(rH (a)) 
+print(rH (a))
+print(v)
+
 Sym table: 
 a-(1, integer) v-32 
 Heap: 
@@ -852,60 +341,8 @@ Output:
 ID: 
 9
 Stack: 
-print(v);
-print(rH (a)) 
-Sym table: 
-a-(1, integer) v-32 
-Heap: 
-1-30 
-File table: 
+print(rH (a))
 
-Output: 
-10 30 
-
-ID: 
-9
-Stack: 
-print(rH (a)) print(v) 
-Sym table: 
-a-(1, integer) v-32 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 30 
-
-ID: 
-9
-Stack: 
-print(rH (a)) print(v) 
-Sym table: 
-a-(1, integer) v-32 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 30 
-
-ID: 
-9
-Stack: 
-print(rH (a)) print(v) 
-Sym table: 
-a-(1, integer) v-32 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 30 
-
-ID: 
-9
-Stack: 
-print(rH (a)) 
 Sym table: 
 a-(1, integer) v-32 
 Heap: 
@@ -914,45 +351,6 @@ File table:
 
 Output: 
 10 30 32 
-
-ID: 
-9
-Stack: 
-print(rH (a)) 
-Sym table: 
-a-(1, integer) v-32 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 30 32 
-
-ID: 
-9
-Stack: 
-print(rH (a)) 
-Sym table: 
-a-(1, integer) v-32 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 30 32 
-
-ID: 
-9
-Stack: 
-
-Sym table: 
-a-(1, integer) v-32 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 30 32 30 
 
 ID: 
 9

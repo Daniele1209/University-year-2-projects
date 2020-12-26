@@ -27,7 +27,7 @@ import Model.PrgState;
 
 public class Controller {
     IRepo repository;
-    ExecutorService executor;
+    final ExecutorService executor = Executors.newFixedThreadPool(2);
 
     public Controller(IRepo Repo) {
         repository = Repo;
@@ -104,15 +104,8 @@ public class Controller {
     }
 */
     void oneStepForAllPrg(List<PrgState> prgList) throws InterruptedException, Custom_Exception {
-        prgList.forEach(prg-> {
-            try {
-                repository.printState(prg);
-            } catch (IOException | Custom_Exception e) {
-                e.printStackTrace();
-            }
-        });
         List <Callable<PrgState>> callList = prgList.stream()
-                .map((PrgState p)->(Callable<PrgState>)(() -> {return p.oneStep();}))
+                .map((PrgState p)->(Callable<PrgState>)(p::oneStep))
                 .collect(Collectors.toList());
         try {
             List<PrgState> newPrgList = executor.invokeAll(callList).stream()
@@ -120,17 +113,16 @@ public class Controller {
                         try {
                             return future.get();
                         } catch (ExecutionException | InterruptedException e) {
-                            System.out.println(e.getMessage());
                         }
                         return null;
                     })
-                    .filter(p->p!=null)
+                    .filter(Objects::nonNull)
                     .collect(Collectors.toList());
             prgList.addAll(newPrgList);
         }
-        catch(InterruptedException e)
+        catch(InterruptedException err)
         {
-            throw  new Custom_Exception(e.getMessage());
+            throw  new Custom_Exception(err.getMessage());
         }
 
         prgList.forEach(prg -> {
@@ -144,18 +136,42 @@ public class Controller {
     }
 
     public void allStep() throws Custom_Exception, InterruptedException,  RuntimeException {
-        executor = Executors.newFixedThreadPool(2);
         //remove the completed programs
         List<PrgState> prgList = removeCompletedPrograms(repository.getPrgList());
         while(prgList.size() > 0){
             garbageCollector(prgList);
             oneStepForAllPrg(prgList);
             prgList=removeCompletedPrograms(repository.getPrgList());
-            prgList=removeDuplicateStates(prgList);
         }
         executor.shutdownNow();
         // update the repository state
         repository.setPrgList(prgList);
+    }
+
+    public PrgState oneStep(PrgState state) throws Custom_Exception, ADTException, STMTException, EXPException {
+        IStack<IStmt> stack = state.getStack();
+        if (stack.isEmpty()) {
+            throw new Custom_Exception("Stack is empty");
+        }
+        IStmt currentStmt = stack.pop();
+        return currentStmt.execute(state);
+    }
+
+    public void executeStep() throws Custom_Exception, InterruptedException {
+
+        List<PrgState> list = removeCompletedPrograms(repository.getPrgList());
+        garbageCollector(list);
+        oneStepForAllPrg(list);
+        list = removeCompletedPrograms(repository.getPrgList());
+
+
+        if(list.isEmpty())
+            executor.shutdownNow();
+        repository.setPrgList(list);
+    }
+
+    public IRepo getRepo() {
+        return repository;
     }
 
     public List<PrgState> removeCompletedPrograms(List<PrgState> prgList) {

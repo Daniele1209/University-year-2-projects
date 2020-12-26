@@ -49,7 +49,7 @@ public class NewHeapStmt implements IStmt{
         program_state.setHeap(heap);
         program_state.setSymTable(symTable);
 
-        return program_state;
+        return null;
     }
 
     @Override

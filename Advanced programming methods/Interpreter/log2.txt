@@ -1,1 +1,141 @@
- 
+ ID: 
+2
+Stack: 
+integer b;
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+integer a
+
+Sym table: 
+
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+2
+Stack: 
+integer b;
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+
+Sym table: 
+a-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+2
+Stack: 
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+integer b
+
+Sym table: 
+a-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+2
+Stack: 
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+2
+Stack: 
+b = a + 1;
+print(b)
+a = 2 + 3 * 5
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+2
+Stack: 
+b = a + 1;
+print(b)
+
+Sym table: 
+a-17 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+2
+Stack: 
+print(b)
+b = a + 1
+
+Sym table: 
+a-17 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+2
+Stack: 
+print(b)
+
+Sym table: 
+a-17 b-18 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+2
+Stack: 
+
+Sym table: 
+a-17 b-18 
+Heap: 
+
+File table: 
+
+Output: 
+18 
+

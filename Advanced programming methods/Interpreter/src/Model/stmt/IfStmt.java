@@ -38,7 +38,7 @@ public class IfStmt implements IStmt{
             throw new STMTException("Not a boolean !");
 
         program_state.setExeStack(stk);
-        return program_state;
+        return null;
     }
 
     @Override

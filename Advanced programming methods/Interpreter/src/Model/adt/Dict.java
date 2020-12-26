@@ -58,7 +58,7 @@ public class Dict<T1,T2> implements IDict<T1,T2> {
     }
 
     @Override
-    public IDict<T1, T2> clone() {
+    public IDict<T1, T2> deepCopy() {
         Dict<T1,T2> clonedDict = new Dict<T1,T2>();
 
         for(Map.Entry<T1,T2> entry : dictionary.entrySet()){

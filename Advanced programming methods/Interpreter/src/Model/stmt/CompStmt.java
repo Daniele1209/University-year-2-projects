@@ -23,7 +23,7 @@ public class CompStmt implements IStmt{
         stk.push(first);
         program_state.setExeStack(stk);
 
-        return program_state;
+        return null;
     }
 
     @Override

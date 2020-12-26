@@ -31,7 +31,7 @@ public class VarDeclStmt implements IStmt {
         program_state.setSymTable(symTable);
         program_state.setExeStack(stk);
 
-        return program_state;
+        return null;
     }
 
     @Override

@@ -119,12 +119,12 @@
                <children>
                   <ImageView fitHeight="177.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../img/sticker.png" />
+                        <Image url="@img/sticker.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="202.0" fitWidth="302.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../img/keanu.png" />
+                        <Image url="@img/keanu.png" />
                      </image>
                   </ImageView>
                       <Button fx:id="step_button" onMouseClicked="#executeOneStep" prefHeight="63.0" prefWidth="262.0" style="-fx-background-color: yellow; -fx-border-width: 2; -fx-border-color: black; -fx-text-fill: #0b557a;" text="Execute One Step_">

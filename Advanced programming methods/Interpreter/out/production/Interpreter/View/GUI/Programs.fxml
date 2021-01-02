@@ -20,7 +20,7 @@
                <children>
                   <ImageView fitHeight="106.0" fitWidth="233.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../img/logo.png" />
+                        <Image url="@img/logo.png" />
                      </image>
                   </ImageView>
                     <Button id="button" fx:id="runProgram" minWidth="100" mnemonicParsing="false" onAction="#startProgram" opacity="0.79" prefHeight="46.0" prefWidth="141.0" style="-fx-background-color: yellow; -fx-border-width: 2; -fx-border-color: black; -fx-text-fill: #0b557a;" text="Execute_" HBox.hgrow="ALWAYS">

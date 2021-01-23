@@ -1,11 +1,15 @@
  ID: 
-4
+1
 Stack: 
-integer b;
-a = 10;
-b = a / 0;
-print(a)
-integer a
+varf = test.txt;
+file_open (varf);
+integer varc;
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf)
+string varf
 
 Sym table: 
 
@@ -17,15 +21,19 @@ Output:
 
 
 ID: 
-4
+1
 Stack: 
-integer b;
-a = 10;
-b = a / 0;
-print(a)
+varf = test.txt;
+file_open (varf);
+integer varc;
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf)
 
 Sym table: 
-a-0 
+varf- 
 Heap: 
 
 File table: 
@@ -34,15 +42,19 @@ Output:
 
 
 ID: 
-4
+1
 Stack: 
-a = 10;
-b = a / 0;
-print(a)
-integer b
+file_open (varf);
+integer varc;
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf)
+varf = test.txt
 
 Sym table: 
-a-0 
+varf- 
 Heap: 
 
 File table: 
@@ -51,14 +63,18 @@ Output:
 
 
 ID: 
-4
+1
 Stack: 
-a = 10;
-b = a / 0;
-print(a)
+file_open (varf);
+integer varc;
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf)
 
 Sym table: 
-a-0 b-0 
+varf-test.txt 
 Heap: 
 
 File table: 
@@ -67,14 +83,18 @@ Output:
 
 
 ID: 
-4
+1
 Stack: 
-b = a / 0;
-print(a)
-a = 10
+integer varc;
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf)
+file_open (varf)
 
 Sym table: 
-a-0 b-0 
+varf-test.txt 
 Heap: 
 
 File table: 
@@ -83,59 +103,58 @@ Output:
 
 
 ID: 
-4
+1
 Stack: 
-b = a / 0;
-print(a)
+integer varc;
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf)
 
 Sym table: 
-a-10 b-0 
+varf-test.txt 
 Heap: 
 
 File table: 
-
+test.txt-java.io.BufferedReader@235c15a9 
 Output: 
 
 
 ID: 
-4
+1
 Stack: 
-print(a)
-b = a / 0
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf)
+integer varc
 
 Sym table: 
-a-10 b-0 
+varf-test.txt 
 Heap: 
 
 File table: 
-
+test.txt-java.io.BufferedReader@235c15a9 
 Output: 
 
 
 ID: 
-4
+1
 Stack: 
-print(a)
+reading_from (varf);
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf)
 
 Sym table: 
-a-10 b-0 
+varf-test.txt varc-0 
 Heap: 
 
 File table: 
-
+test.txt-java.io.BufferedReader@235c15a9 
 Output: 
 
-
-ID: 
-4
-Stack: 
-
-Sym table: 
-a-10 b-0 
-Heap: 
-
-File table: 
-
-Output: 
-10 
 

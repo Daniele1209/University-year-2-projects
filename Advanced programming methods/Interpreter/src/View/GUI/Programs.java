@@ -58,24 +58,6 @@ public class Programs {
         programsList.getSelectionModel().select(0);
     }
 
-    private ObservableList<Controller> getControllers() throws ADTException {
-        Listt<IStmt> stmts = getExampleList();
-        LinkedList<Controller> list = new LinkedList<Controller>();
-        for(int i = 0; i <= stmts.size()-1; i++) {
-            try{
-                IStack<IStmt> stack = new Stackk<>();
-                PrgState state = new PrgState(stack, new Dict<String, IValue>(), new Listt<IValue>(), new Dict<StringValue, BufferedReader>(), new Heap<>(), stmts.get(i));
-                Repo repository = new Repo(state, "log" + String.valueOf(i+1) + ".txt");
-                Controller controller = new Controller(repository);
-                list.add(controller);
-            }catch(ADTException | Custom_Exception | IOException err) {
-                err.printStackTrace();
-            }
-        }
-        return FXCollections.observableArrayList(list);
-    }
-
-
     public Listt<IStmt> getExampleList() {
         Listt<IStmt> exList = new Listt<IStmt>();
 
@@ -100,7 +82,7 @@ public class Programs {
         exList.add(ex3);
 
         IStmt ex4 = new CompStmt(
-                new VarDeclStmt("varf", new StringType()),
+                new VarDeclStmt("varf", new IntegerType()),
                 new CompStmt(new AssignStmt("varf", new ValueExp(new StringValue("test.txt"))),
                         new CompStmt(new OpenFileStmt(new VarExp("varf")),
                                 new CompStmt(new VarDeclStmt("varc", new IntegerType()),
@@ -149,6 +131,8 @@ public class Programs {
 
         try{
                 IStack<IStmt> stack = new Stackk<>();
+                IStmt run_program = stmts.get(index);
+                run_program.typecheck(new Dict<>());
                 PrgState state = new PrgState(stack, new Dict<String, IValue>(), new Listt<IValue>(), new Dict<StringValue, BufferedReader>(), new Heap<>(), stmts.get(index));
                 Repo repository = new Repo(state, "log" + String.valueOf(index+1) + ".txt");
                 Controller controller = new Controller(repository);
@@ -163,8 +147,8 @@ public class Programs {
                 executorStage.setScene(executorScene);
                 executorStage.setTitle("Program Execution");
                 executorStage.show();
-        }catch(ADTException | Custom_Exception | IOException err) {
-            err.printStackTrace();
+        }catch(ADTException | Custom_Exception | IOException | EXPException | STMTException err) {
+            //err.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("IOException Error !");
             alert.setHeaderText("IOException Error !");

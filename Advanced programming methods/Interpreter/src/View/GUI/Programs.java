@@ -82,7 +82,7 @@ public class Programs {
         exList.add(ex3);
 
         IStmt ex4 = new CompStmt(
-                new VarDeclStmt("varf", new IntegerType()),
+                new VarDeclStmt("varf", new StringType()),
                 new CompStmt(new AssignStmt("varf", new ValueExp(new StringValue("test.txt"))),
                         new CompStmt(new OpenFileStmt(new VarExp("varf")),
                                 new CompStmt(new VarDeclStmt("varc", new IntegerType()),

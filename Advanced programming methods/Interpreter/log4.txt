@@ -117,7 +117,7 @@ varf-test.txt
 Heap: 
 
 File table: 
-test.txt-java.io.BufferedReader@235c15a9 
+test.txt-java.io.BufferedReader@1f3f8c70 
 Output: 
 
 
@@ -136,7 +136,7 @@ varf-test.txt
 Heap: 
 
 File table: 
-test.txt-java.io.BufferedReader@235c15a9 
+test.txt-java.io.BufferedReader@1f3f8c70 
 Output: 
 
 
@@ -154,7 +154,148 @@ varf-test.txt varc-0
 Heap: 
 
 File table: 
-test.txt-java.io.BufferedReader@235c15a9 
+test.txt-java.io.BufferedReader@1f3f8c70 
 Output: 
 
+
+ID: 
+1
+Stack: 
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf)
+reading_from (varf)
+
+Sym table: 
+varf-test.txt varc-0 
+Heap: 
+
+File table: 
+test.txt-java.io.BufferedReader@1f3f8c70 
+Output: 
+
+
+ID: 
+1
+Stack: 
+print(varc);
+reading_from (varf);
+print(varc);
+closing_file (varf)
+
+Sym table: 
+varf-test.txt varc-15 
+Heap: 
+
+File table: 
+test.txt-java.io.BufferedReader@1f3f8c70 
+Output: 
+
+
+ID: 
+1
+Stack: 
+reading_from (varf);
+print(varc);
+closing_file (varf)
+print(varc)
+
+Sym table: 
+varf-test.txt varc-15 
+Heap: 
+
+File table: 
+test.txt-java.io.BufferedReader@1f3f8c70 
+Output: 
+
+
+ID: 
+1
+Stack: 
+reading_from (varf);
+print(varc);
+closing_file (varf)
+
+Sym table: 
+varf-test.txt varc-15 
+Heap: 
+
+File table: 
+test.txt-java.io.BufferedReader@1f3f8c70 
+Output: 
+15 
+
+ID: 
+1
+Stack: 
+print(varc);
+closing_file (varf)
+reading_from (varf)
+
+Sym table: 
+varf-test.txt varc-15 
+Heap: 
+
+File table: 
+test.txt-java.io.BufferedReader@1f3f8c70 
+Output: 
+15 
+
+ID: 
+1
+Stack: 
+print(varc);
+closing_file (varf)
+
+Sym table: 
+varf-test.txt varc-40 
+Heap: 
+
+File table: 
+test.txt-java.io.BufferedReader@1f3f8c70 
+Output: 
+15 
+
+ID: 
+1
+Stack: 
+closing_file (varf)
+print(varc)
+
+Sym table: 
+varf-test.txt varc-40 
+Heap: 
+
+File table: 
+test.txt-java.io.BufferedReader@1f3f8c70 
+Output: 
+15 
+
+ID: 
+1
+Stack: 
+closing_file (varf)
+
+Sym table: 
+varf-test.txt varc-40 
+Heap: 
+
+File table: 
+test.txt-java.io.BufferedReader@1f3f8c70 
+Output: 
+15 40 
+
+ID: 
+1
+Stack: 
+
+Sym table: 
+varf-test.txt varc-40 
+Heap: 
+
+File table: 
+
+Output: 
+15 40 
 

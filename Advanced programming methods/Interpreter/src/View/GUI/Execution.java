@@ -108,7 +108,15 @@ public class Execution {
             error.setHeaderText("Execution error ! :(");
             error.showAndWait();
         }
-        populate_widgets();
+        try {
+            populate_widgets();
+        }
+        catch(Custom_Exception | ADTException err) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.setTitle("Execution error !");
+            error.setHeaderText("Nothing left to execute ! :(");
+            error.showAndWait();
+        }
     }
 
     private void populate_prgState(List<PrgState> state_list) {

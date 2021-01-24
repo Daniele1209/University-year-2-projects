@@ -54,6 +54,7 @@ public class Programs {
         examples.add("integer v; v=4; (while (v > 0) print(v); v=v-1); print(v)");
         examples.add("Ref integer v; new(v,20); Ref Ref integer a; new(a,v); print(rH (v)); print(rH (rH (a)) + 5)");
         examples.add("integer v; Ref integer a; v=10; new(a,22); fork(wH(a,30)); v=32; print(v); print(rH(a))); print(v); print(rH(a))");
+        examples.add("integer v; for(v=1;v<20;v=v+1) print(v);");
         programsList.setItems(FXCollections.observableList(examples));
         programsList.getSelectionModel().select(0);
     }
@@ -119,6 +120,13 @@ public class Programs {
                                                         new CompStmt(new PrintStmt(new VarExp("v")), new PrintStmt(new ReadHeapExp(new VarExp("a"))))))),
                                                 new CompStmt(new PrintStmt(new VarExp("v")), new PrintStmt(new ReadHeapExp(new VarExp("a")))))))));
         exList.add(ex7);
+
+        IStmt ex8 = new CompStmt(new VarDeclStmt("v", new IntegerType()),
+                        new CompStmt(new ForStmt(new AssignStmt("v", new ValueExp(new IntegerValue(0))),
+                                new AssignStmt("v",  new ArithExp('+', new VarExp("v"), new ValueExp(new IntegerValue(1)))),
+                                    new RelationalExp(new VarExp("v"), new ValueExp(new IntegerValue(10)), "<"),
+                                        new PrintStmt(new VarExp("v"))),new PrintStmt(new VarExp("v"))));
+        exList.add(ex8);
 
         return exList;
     }

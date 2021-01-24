@@ -1,5 +1,5 @@
  ID: 
-6
+12
 Stack: 
 new (v , 20);
 Ref (Ref (integer)) a;
@@ -18,7 +18,7 @@ Output:
 
 
 ID: 
-6
+12
 Stack: 
 new (v , 20);
 Ref (Ref (integer)) a;
@@ -36,7 +36,7 @@ Output:
 
 
 ID: 
-6
+12
 Stack: 
 Ref (Ref (integer)) a;
 new (a , v);
@@ -54,7 +54,7 @@ Output:
 
 
 ID: 
-6
+12
 Stack: 
 Ref (Ref (integer)) a;
 new (a , v);
@@ -71,7 +71,7 @@ Output:
 
 
 ID: 
-6
+12
 Stack: 
 new (a , v);
 print(rH (v));
@@ -88,7 +88,7 @@ Output:
 
 
 ID: 
-6
+12
 Stack: 
 new (a , v);
 print(rH (v));
@@ -104,7 +104,7 @@ Output:
 
 
 ID: 
-6
+12
 Stack: 
 print(rH (v));
 print(rH (rH (a)) + 5)
@@ -120,7 +120,7 @@ Output:
 
 
 ID: 
-6
+12
 Stack: 
 print(rH (v));
 print(rH (rH (a)) + 5)
@@ -135,7 +135,7 @@ Output:
 
 
 ID: 
-6
+12
 Stack: 
 print(rH (rH (a)) + 5)
 print(rH (v))
@@ -150,7 +150,7 @@ Output:
 
 
 ID: 
-6
+12
 Stack: 
 print(rH (rH (a)) + 5)
 
@@ -164,7 +164,7 @@ Output:
 20 
 
 ID: 
-6
+12
 Stack: 
 
 Sym table: 

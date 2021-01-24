@@ -1,15 +1,8 @@
  ID: 
-8
+1
 Stack: 
-Ref (integer) a;
-v = 10;
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a))
+for(v = 0 ; v < 10 ; v = v + 1) print(v));
+print(v)
 integer v
 
 Sym table: 
@@ -22,17 +15,10 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
-Ref (integer) a;
-v = 10;
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a))
+for(v = 0 ; v < 10 ; v = v + 1) print(v));
+print(v)
 
 Sym table: 
 v-0 
@@ -44,17 +30,10 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
-v = 10;
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a))
-Ref (integer) a
+print(v)
+for(v = 0 ; v < 10 ; v = v + 1) print(v))
 
 Sym table: 
 v-0 
@@ -66,19 +45,15 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
-v = 10;
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a))
+print(v)
+v = 0;
+while (v < 10) print(v);
+v = v + 1
 
 Sym table: 
-a-(0, integer) v-0 
+v-0 
 Heap: 
 
 File table: 
@@ -87,19 +62,15 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a))
-v = 10
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = 0
 
 Sym table: 
-a-(0, integer) v-0 
+v-0 
 Heap: 
 
 File table: 
@@ -108,18 +79,14 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
-new (a , 22);
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a))
+print(v)
+while (v < 10) print(v);
+v = v + 1
 
 Sym table: 
-a-(0, integer) v-10 
+v-0 
 Heap: 
 
 File table: 
@@ -128,18 +95,16 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
-fork (wH (a ; 30);
-v = 32;
+print(v)
+while (v < 10) print(v);
+v = v + 1
 print(v);
-print(rH (a)));
-print(v);
-print(rH (a))
-new (a , 22)
+v = v + 1
 
 Sym table: 
-a-(0, integer) v-10 
+v-0 
 Heap: 
 
 File table: 
@@ -148,220 +113,701 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)));
-print(v);
-print(rH (a))
-
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-print(v);
-print(rH (a))
-fork (wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a)))
-
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-print(v);
-print(rH (a))
-
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
-
-Output: 
-
-
-ID: 
-9
-Stack: 
-wH (a ; 30);
-v = 32;
-print(v);
-print(rH (a))
-
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-22 
-File table: 
-
-Output: 
-
-
-ID: 
-8
-Stack: 
-print(rH (a))
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
 print(v)
 
 Sym table: 
-a-(1, integer) v-10 
+v-0 
 Heap: 
-1-22 
+
 File table: 
 
 Output: 
 
 
 ID: 
-9
+1
 Stack: 
-v = 32;
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+
+Sym table: 
+v-0 
+Heap: 
+
+File table: 
+
+Output: 
+0 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+
+Sym table: 
+v-1 
+Heap: 
+
+File table: 
+
+Output: 
+0 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
 print(v);
-print(rH (a))
-wH (a ; 30)
+v = v + 1
 
 Sym table: 
-a-(1, integer) v-10 
+v-1 
 Heap: 
-1-22 
+
 File table: 
 
 Output: 
-
-
-ID: 
-8
-Stack: 
-print(rH (a))
-
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 
+0 
 
 ID: 
-9
+1
 Stack: 
-v = 32;
-print(v);
-print(rH (a))
-
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 
-
-ID: 
-8
-Stack: 
-
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 30 
-
-ID: 
-9
-Stack: 
-print(v);
-print(rH (a))
-v = 32
-
-Sym table: 
-a-(1, integer) v-10 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 30 
-
-ID: 
-9
-Stack: 
-print(v);
-print(rH (a))
-
-Sym table: 
-a-(1, integer) v-32 
-Heap: 
-1-30 
-File table: 
-
-Output: 
-10 30 
-
-ID: 
-9
-Stack: 
-print(rH (a))
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
 print(v)
 
 Sym table: 
-a-(1, integer) v-32 
+v-1 
 Heap: 
-1-30 
+
 File table: 
 
 Output: 
-10 30 
+0 
 
 ID: 
-9
+1
 Stack: 
-print(rH (a))
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
 
 Sym table: 
-a-(1, integer) v-32 
+v-1 
 Heap: 
-1-30 
+
 File table: 
 
 Output: 
-10 30 32 
+0 1 
 
 ID: 
-9
+1
 Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
 
 Sym table: 
-a-(1, integer) v-32 
+v-2 
 Heap: 
-1-30 
+
 File table: 
 
 Output: 
-10 30 32 30 
+0 1 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+print(v);
+v = v + 1
+
+Sym table: 
+v-2 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+print(v)
+
+Sym table: 
+v-2 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+
+Sym table: 
+v-2 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+
+Sym table: 
+v-3 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+print(v);
+v = v + 1
+
+Sym table: 
+v-3 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+print(v)
+
+Sym table: 
+v-3 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+
+Sym table: 
+v-3 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+
+Sym table: 
+v-4 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+print(v);
+v = v + 1
+
+Sym table: 
+v-4 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+print(v)
+
+Sym table: 
+v-4 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+
+Sym table: 
+v-4 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+
+Sym table: 
+v-5 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+print(v);
+v = v + 1
+
+Sym table: 
+v-5 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+print(v)
+
+Sym table: 
+v-5 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+
+Sym table: 
+v-5 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+
+Sym table: 
+v-6 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+print(v);
+v = v + 1
+
+Sym table: 
+v-6 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+print(v)
+
+Sym table: 
+v-6 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+
+Sym table: 
+v-6 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+
+Sym table: 
+v-7 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+print(v);
+v = v + 1
+
+Sym table: 
+v-7 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+print(v)
+
+Sym table: 
+v-7 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+
+Sym table: 
+v-7 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 7 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+
+Sym table: 
+v-8 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 7 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+print(v);
+v = v + 1
+
+Sym table: 
+v-8 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 7 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+print(v)
+
+Sym table: 
+v-8 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 7 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+
+Sym table: 
+v-8 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 7 8 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+
+Sym table: 
+v-9 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 7 8 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+print(v);
+v = v + 1
+
+Sym table: 
+v-9 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 7 8 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+print(v)
+
+Sym table: 
+v-9 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 7 8 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+v = v + 1
+
+Sym table: 
+v-9 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 7 8 9 
+
+ID: 
+1
+Stack: 
+print(v)
+while (v < 10) print(v);
+v = v + 1
+
+Sym table: 
+v-10 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 7 8 9 
+
+ID: 
+1
+Stack: 
+print(v)
+
+Sym table: 
+v-10 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 7 8 9 
+
+ID: 
+1
+Stack: 
+
+Sym table: 
+v-10 
+Heap: 
+
+File table: 
+
+Output: 
+0 1 2 3 4 5 6 7 8 9 10 
 

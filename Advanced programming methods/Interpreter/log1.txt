@@ -1,5 +1,5 @@
  ID: 
-8
+10
 Stack: 
 v = 2;
 print(v)
@@ -15,7 +15,7 @@ Output:
 
 
 ID: 
-8
+10
 Stack: 
 v = 2;
 print(v)
@@ -30,7 +30,7 @@ Output:
 
 
 ID: 
-8
+10
 Stack: 
 print(v)
 v = 2
@@ -45,7 +45,7 @@ Output:
 
 
 ID: 
-8
+10
 Stack: 
 print(v)
 
@@ -59,7 +59,7 @@ Output:
 
 
 ID: 
-8
+10
 Stack: 
 
 Sym table: 

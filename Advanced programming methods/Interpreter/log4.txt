@@ -1,5 +1,5 @@
  ID: 
-1
+11
 Stack: 
 varf = test.txt;
 file_open (varf);
@@ -21,7 +21,7 @@ Output:
 
 
 ID: 
-1
+11
 Stack: 
 varf = test.txt;
 file_open (varf);
@@ -42,7 +42,7 @@ Output:
 
 
 ID: 
-1
+11
 Stack: 
 file_open (varf);
 integer varc;
@@ -63,7 +63,7 @@ Output:
 
 
 ID: 
-1
+11
 Stack: 
 file_open (varf);
 integer varc;
@@ -83,7 +83,7 @@ Output:
 
 
 ID: 
-1
+11
 Stack: 
 integer varc;
 reading_from (varf);
@@ -103,7 +103,7 @@ Output:
 
 
 ID: 
-1
+11
 Stack: 
 integer varc;
 reading_from (varf);
@@ -117,12 +117,12 @@ varf-test.txt
 Heap: 
 
 File table: 
-test.txt-java.io.BufferedReader@1f3f8c70 
+test.txt-java.io.BufferedReader@1714515f 
 Output: 
 
 
 ID: 
-1
+11
 Stack: 
 reading_from (varf);
 print(varc);
@@ -136,12 +136,12 @@ varf-test.txt
 Heap: 
 
 File table: 
-test.txt-java.io.BufferedReader@1f3f8c70 
+test.txt-java.io.BufferedReader@1714515f 
 Output: 
 
 
 ID: 
-1
+11
 Stack: 
 reading_from (varf);
 print(varc);
@@ -154,12 +154,12 @@ varf-test.txt varc-0
 Heap: 
 
 File table: 
-test.txt-java.io.BufferedReader@1f3f8c70 
+test.txt-java.io.BufferedReader@1714515f 
 Output: 
 
 
 ID: 
-1
+11
 Stack: 
 print(varc);
 reading_from (varf);
@@ -172,12 +172,12 @@ varf-test.txt varc-0
 Heap: 
 
 File table: 
-test.txt-java.io.BufferedReader@1f3f8c70 
+test.txt-java.io.BufferedReader@1714515f 
 Output: 
 
 
 ID: 
-1
+11
 Stack: 
 print(varc);
 reading_from (varf);
@@ -189,12 +189,12 @@ varf-test.txt varc-15
 Heap: 
 
 File table: 
-test.txt-java.io.BufferedReader@1f3f8c70 
+test.txt-java.io.BufferedReader@1714515f 
 Output: 
 
 
 ID: 
-1
+11
 Stack: 
 reading_from (varf);
 print(varc);
@@ -206,12 +206,12 @@ varf-test.txt varc-15
 Heap: 
 
 File table: 
-test.txt-java.io.BufferedReader@1f3f8c70 
+test.txt-java.io.BufferedReader@1714515f 
 Output: 
 
 
 ID: 
-1
+11
 Stack: 
 reading_from (varf);
 print(varc);
@@ -222,12 +222,12 @@ varf-test.txt varc-15
 Heap: 
 
 File table: 
-test.txt-java.io.BufferedReader@1f3f8c70 
+test.txt-java.io.BufferedReader@1714515f 
 Output: 
 15 
 
 ID: 
-1
+11
 Stack: 
 print(varc);
 closing_file (varf)
@@ -238,12 +238,12 @@ varf-test.txt varc-15
 Heap: 
 
 File table: 
-test.txt-java.io.BufferedReader@1f3f8c70 
+test.txt-java.io.BufferedReader@1714515f 
 Output: 
 15 
 
 ID: 
-1
+11
 Stack: 
 print(varc);
 closing_file (varf)
@@ -253,12 +253,12 @@ varf-test.txt varc-40
 Heap: 
 
 File table: 
-test.txt-java.io.BufferedReader@1f3f8c70 
+test.txt-java.io.BufferedReader@1714515f 
 Output: 
 15 
 
 ID: 
-1
+11
 Stack: 
 closing_file (varf)
 print(varc)
@@ -268,12 +268,12 @@ varf-test.txt varc-40
 Heap: 
 
 File table: 
-test.txt-java.io.BufferedReader@1f3f8c70 
+test.txt-java.io.BufferedReader@1714515f 
 Output: 
 15 
 
 ID: 
-1
+11
 Stack: 
 closing_file (varf)
 
@@ -282,12 +282,12 @@ varf-test.txt varc-40
 Heap: 
 
 File table: 
-test.txt-java.io.BufferedReader@1f3f8c70 
+test.txt-java.io.BufferedReader@1714515f 
 Output: 
 15 40 
 
 ID: 
-1
+11
 Stack: 
 
 Sym table: 

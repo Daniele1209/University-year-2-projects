@@ -5,6 +5,7 @@ import Model.Exceptions.STMTException;
 import Model.PrgState;
 import Model.Type.BoolType;
 import Model.Type.IType;
+import Model.Type.IntegerType;
 import Model.Value.IValue;
 import Model.adt.IDict;
 import Model.adt.IStack;
@@ -37,14 +38,7 @@ public class ForStmt implements IStmt {
 
     @Override
     public IDict<String, IType> typecheck(IDict<String, IType> typeEnvironment) throws EXPException, STMTException {
-        IType expType = expression.typecheck(typeEnvironment);
-        if (expType.equals(new BoolType())) {
-            statement.typecheck(typeEnvironment.deepCopy());
-            return typeEnvironment;
-        }
-        else {
-            throw new STMTException("The condition in " + this.toString() + " is not a boolean");
-        }
+        return typeEnvironment;
     }
 
     @Override

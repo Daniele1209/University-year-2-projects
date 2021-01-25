@@ -1,5 +1,5 @@
  ID: 
-8
+1
 Stack: 
 integer v;
 a = true;
@@ -17,7 +17,7 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
 integer v;
 a = true;
@@ -34,7 +34,7 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
 a = true;
 if(a) then { v = 2 } else { v = 3 };
@@ -51,7 +51,7 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
 a = true;
 if(a) then { v = 2 } else { v = 3 };
@@ -67,7 +67,7 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
 if(a) then { v = 2 } else { v = 3 };
 print(v)
@@ -83,7 +83,7 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
 if(a) then { v = 2 } else { v = 3 };
 print(v)
@@ -98,7 +98,7 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
 print(v)
 if(a) then { v = 2 } else { v = 3 }
@@ -113,7 +113,7 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
 print(v)
 v = 2
@@ -128,7 +128,7 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
 print(v)
 
@@ -142,7 +142,7 @@ Output:
 
 
 ID: 
-8
+1
 Stack: 
 
 Sym table: 

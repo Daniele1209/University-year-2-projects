@@ -27,17 +27,17 @@ public class IfStmt implements IStmt{
         IStack<IStmt> stk = program_state.getStack();
         IValue val = expression.eval(program_state.getSymTable(), program_state.getHeap());
 
-        if(val.getType().equals(new BoolType())) {
-            BoolValue bool = (BoolValue) val;
-            if(bool.getValue())
-                stk.push(then_statement);
-            else
-                stk.push(else_statement);
+        if (!val.getType().equals(new BoolType())) {
+            throw new STMTException("Condition not of bool !");
         }
-        else
-            throw new STMTException("Not a boolean !");
+        if (val.equals(new BoolValue(true))) {
+            stk.push(then_statement);
+        } else {
+            stk.push(else_statement);
+        }
 
         program_state.setExeStack(stk);
+
         return null;
     }
 

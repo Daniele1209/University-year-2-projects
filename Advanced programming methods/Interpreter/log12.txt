@@ -1,0 +1,281 @@
+ ID: 
+1
+Stack: 
+integer c;
+b = true;
+c = (b)?100:200;;
+print(c);
+c = (false)?100:200;;
+print(c)
+boolean b
+
+Sym table: 
+
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+integer c;
+b = true;
+c = (b)?100:200;;
+print(c);
+c = (false)?100:200;;
+print(c)
+
+Sym table: 
+b-false 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+b = true;
+c = (b)?100:200;;
+print(c);
+c = (false)?100:200;;
+print(c)
+integer c
+
+Sym table: 
+b-false 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+b = true;
+c = (b)?100:200;;
+print(c);
+c = (false)?100:200;;
+print(c)
+
+Sym table: 
+b-false c-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+c = (b)?100:200;;
+print(c);
+c = (false)?100:200;;
+print(c)
+b = true
+
+Sym table: 
+b-false c-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+c = (b)?100:200;;
+print(c);
+c = (false)?100:200;;
+print(c)
+
+Sym table: 
+b-true c-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+print(c);
+c = (false)?100:200;;
+print(c)
+c = (b)?100:200;
+
+Sym table: 
+b-true c-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+print(c);
+c = (false)?100:200;;
+print(c)
+if(b) then { c = 100 } else { c = 200 }
+
+Sym table: 
+b-true c-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+print(c);
+c = (false)?100:200;;
+print(c)
+c = 100
+
+Sym table: 
+b-true c-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+print(c);
+c = (false)?100:200;;
+print(c)
+
+Sym table: 
+b-true c-100 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+c = (false)?100:200;;
+print(c)
+print(c)
+
+Sym table: 
+b-true c-100 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+c = (false)?100:200;;
+print(c)
+
+Sym table: 
+b-true c-100 
+Heap: 
+
+File table: 
+
+Output: 
+100 
+
+ID: 
+1
+Stack: 
+print(c)
+c = (false)?100:200;
+
+Sym table: 
+b-true c-100 
+Heap: 
+
+File table: 
+
+Output: 
+100 
+
+ID: 
+1
+Stack: 
+print(c)
+if(false) then { c = 100 } else { c = 200 }
+
+Sym table: 
+b-true c-100 
+Heap: 
+
+File table: 
+
+Output: 
+100 
+
+ID: 
+1
+Stack: 
+print(c)
+c = 200
+
+Sym table: 
+b-true c-100 
+Heap: 
+
+File table: 
+
+Output: 
+100 
+
+ID: 
+1
+Stack: 
+print(c)
+
+Sym table: 
+b-true c-200 
+Heap: 
+
+File table: 
+
+Output: 
+100 
+
+ID: 
+1
+Stack: 
+
+Sym table: 
+b-true c-200 
+Heap: 
+
+File table: 
+
+Output: 
+100 200 
+

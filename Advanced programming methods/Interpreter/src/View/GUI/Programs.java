@@ -54,7 +54,11 @@ public class Programs {
         examples.add("integer v; v=4; (while (v > 0) print(v); v=v-1); print(v)");
         examples.add("Ref integer v; new(v,20); Ref Ref integer a; new(a,v); print(rH (v)); print(rH (rH (a)) + 5)");
         examples.add("integer v; Ref integer a; v=10; new(a,22); fork(wH(a,30)); v=32; print(v); print(rH(a))); print(v); print(rH(a))");
-        examples.add("integer v; for(v=1;v<20;v=v+1) print(v);");
+        examples.add("Ref integer a; new(a,20); (for(v=0;v<3;v=v+1) fork(print(v); v=v*rh(a))); print(rh(a))");
+        examples.add("int a; int b; int c; a=1;b=2;c=5; (switch(a*10) (case (b*c) : print(a);print(b))(case (10) : print(100);print(200))(default : print(300))); print(300)");
+        examples.add("v=0; (repeat (fork(print(v);v=v-1);v=v+1) until v==3); x=1;y=2;z=3;w=4; print(v*10)");
+        examples.add("v=0; (while(v<3) (fork(print(v);v=v+1);v=v+1); sleep(5); print(v*10)");
+        examples.add("bool b; int c; b=true; c=b?100:200; print(c); c= (false)?100:200; print(c);");
         programsList.setItems(FXCollections.observableList(examples));
         programsList.getSelectionModel().select(0);
     }
@@ -121,12 +125,58 @@ public class Programs {
                                                 new CompStmt(new PrintStmt(new VarExp("v")), new PrintStmt(new ReadHeapExp(new VarExp("a")))))))));
         exList.add(ex7);
 
-        IStmt ex8 = new CompStmt(new VarDeclStmt("v", new IntegerType()),
-                        new CompStmt(new ForStmt(new AssignStmt("v", new ValueExp(new IntegerValue(0))),
-                                new AssignStmt("v",  new ArithExp('+', new VarExp("v"), new ValueExp(new IntegerValue(1)))),
-                                    new RelationalExp(new VarExp("v"), new ValueExp(new IntegerValue(10)), "<"),
-                                        new PrintStmt(new VarExp("v"))),new PrintStmt(new VarExp("v"))));
+        IStmt ex8 = new CompStmt(new VarDeclStmt("a", new RefType(new IntegerType())),
+                new CompStmt(new NewHeapStmt("a", new ValueExp(new IntegerValue(20))),
+                        new CompStmt(new VarDeclStmt("v",  new IntegerType()),
+                            new CompStmt(new ForStmt(new AssignStmt("v", new ValueExp(new IntegerValue(0))),
+                                    new AssignStmt("v",  new ArithExp('+', new VarExp("v"), new ValueExp(new IntegerValue(1)))),
+                                        new RelationalExp(new VarExp("v"), new ValueExp(new IntegerValue(3)), "<"),
+                                            new ForkStmt(new CompStmt(new PrintStmt(new VarExp("v")), new AssignStmt("v",
+                                                new ArithExp('*', new VarExp("v"), new ReadHeapExp(new VarExp("a"))))))),
+                                                    new PrintStmt(new ReadHeapExp(new VarExp("a")))))));
         exList.add(ex8);
+
+        IStmt ex9 = new CompStmt(new VarDeclStmt("a", new IntegerType()),
+                        new CompStmt(new VarDeclStmt("b", new IntegerType()),
+                                new CompStmt(new VarDeclStmt("c", new IntegerType()),
+                                    new CompStmt(new AssignStmt("a", new ValueExp(new IntegerValue(1))),
+                                        new CompStmt(new AssignStmt("b", new ValueExp(new IntegerValue(2))),
+                                                new CompStmt(new AssignStmt("c", new ValueExp(new IntegerValue(5))),
+                                                    new CompStmt(new SwitchStmt(new ArithExp('*', new VarExp("a"), new ValueExp(new IntegerValue(10))),
+                                                            new ArithExp('*', new VarExp("b"), new VarExp("c")),
+                                                                new CompStmt(new PrintStmt(new VarExp("a")), new PrintStmt(new VarExp("b"))),
+                                                                    new ValueExp(new IntegerValue(10)),
+                                                                        new CompStmt(new PrintStmt(new ValueExp(new IntegerValue(100))), new PrintStmt(new ValueExp(new IntegerValue(200)))),
+                                                                            new PrintStmt(new ValueExp(new IntegerValue(300)))), new PrintStmt(new ValueExp(new IntegerValue(300))))))))));
+        exList.add(ex9);
+
+        IStmt ex10 = new CompStmt(new VarDeclStmt("v", new IntegerType()),
+                new CompStmt(new AssignStmt("v", new ValueExp(new IntegerValue(0))),
+                        new CompStmt(new DoWhileStatement(new RelationalExp(new VarExp("v"), new ValueExp(new IntegerValue(3)), "=="),
+                                new CompStmt(new ForkStmt(new CompStmt(new PrintStmt(new VarExp("v")),
+                                        new AssignStmt("v", new ArithExp('-', new VarExp("v"), new ValueExp(new IntegerValue(1)))))),
+                                                    new AssignStmt("v", new ArithExp('+', new VarExp("v"), new ValueExp(new IntegerValue(1)))))),
+                                                            new PrintStmt(new ArithExp('*', new VarExp("v"), new ValueExp(new IntegerValue(10)))))));
+        exList.add(ex10);
+
+        IStmt ex11 = new CompStmt(new VarDeclStmt("v", new IntegerType()),
+                new CompStmt(new AssignStmt("v", new ValueExp(new IntegerValue(0))),
+                        new CompStmt(new WhileStmt(new RelationalExp(new VarExp("v"), new ValueExp(new IntegerValue(3)), "<"),
+                                new CompStmt(new ForkStmt(new CompStmt(new PrintStmt(new VarExp("v")),
+                                        new AssignStmt("v", new ArithExp('+', new VarExp("v"), new ValueExp(new IntegerValue(1)))))),
+                                            new AssignStmt("v", new ArithExp('+', new VarExp("v"), new ValueExp(new IntegerValue(1)))))),
+                                                new CompStmt(new SleepStatement(new IntegerValue(5)),new PrintStmt(new ArithExp('*',
+                                                        new VarExp("v"), new ValueExp(new IntegerValue(10))))))));
+        exList.add(ex11);
+
+        IStmt ex12 = new CompStmt( new VarDeclStmt("b",new BoolType()),
+                         new CompStmt( new VarDeclStmt("c",new IntegerType()),
+                                 new CompStmt(new AssignStmt("b", new ValueExp(new BoolValue(true))),
+                                         new CompStmt( new ConditionalAssigStmt("c", new VarExp("b"), new ValueExp(new IntegerValue(100)), new ValueExp(new IntegerValue(200))),
+                                                 new CompStmt( new PrintStmt(new VarExp("c")),
+                                                         new CompStmt( new ConditionalAssigStmt("c", new ValueExp(new BoolValue(false)), new ValueExp(new IntegerValue(100)), new ValueExp(new IntegerValue(200))),
+                                                                new PrintStmt(new VarExp("c"))))))));
+        exList.add(ex12);
 
         return exList;
     }

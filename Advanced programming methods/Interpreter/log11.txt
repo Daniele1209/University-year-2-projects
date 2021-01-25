@@ -1,0 +1,348 @@
+ ID: 
+1
+Stack: 
+integer b;
+sleep( 10 );
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+integer a
+
+Sym table: 
+
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+integer b;
+sleep( 10 );
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+
+Sym table: 
+a-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+sleep( 10 );
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+integer b
+
+Sym table: 
+a-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+sleep( 10 );
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+sleep( 10 )
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+sleep( 9 )
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+sleep( 8 )
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+sleep( 7 )
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+sleep( 6 )
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+sleep( 5 )
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+sleep( 4 )
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+sleep( 3 )
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+sleep( 2 )
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+sleep( 1 )
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+sleep( 0 )
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+a = 2 + 3 * 5;
+b = a + 1;
+print(b)
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+b = a + 1;
+print(b)
+a = 2 + 3 * 5
+
+Sym table: 
+a-0 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+b = a + 1;
+print(b)
+
+Sym table: 
+a-17 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+print(b)
+b = a + 1
+
+Sym table: 
+a-17 b-0 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+print(b)
+
+Sym table: 
+a-17 b-18 
+Heap: 
+
+File table: 
+
+Output: 
+
+
+ID: 
+1
+Stack: 
+
+Sym table: 
+a-17 b-18 
+Heap: 
+
+File table: 
+
+Output: 
+18 
+

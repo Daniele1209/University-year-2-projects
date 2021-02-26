@@ -192,7 +192,7 @@ class Drone:
     def moveDSF(self, detectedMap, row, column):
 
         # Use sleep to have a delay between moves
-        time.sleep(.005)
+        time.sleep(.10)
 
         # Append the current position to the visited list
         self.visited.append([row, column])

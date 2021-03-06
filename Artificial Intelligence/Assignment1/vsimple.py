@@ -1,18 +1,18 @@
-
 # import the pygame module, so you can use it
-import pickle ,pygame ,sys
+import pickle, pygame, sys
 from pygame.locals import *
 from random import random, randint
 import numpy as np
 import time
 
 # Creating some colors
-BLUE  = (0, 0, 255)
-GRAYBLUE = (50 ,120 ,120)
-RED   = (255, 0, 0)
+BLUE = (0, 0, 255)
+GRAYBLUE = (50, 120, 120)
+RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+CYAN = (0, 255, 255)
 
 # define directions
 UP = 0
@@ -29,23 +29,23 @@ class Environment:
         self.__n = 20
         self.__m = 20
         self.__surface = np.zeros((self.__n, self.__m))
-    
-    def randomMap(self, fill = 0.2):
+
+    def randomMap(self, fill=0.2):
         for i in range(self.__n):
             for j in range(self.__m):
-                if random() <= fill :
+                if random() <= fill:
                     self.__surface[i][j] = 1
-                
+
     def __str__(self):
-        string =""
+        string = ""
         for i in range(self.__n):
             for j in range(self.__m):
                 string = string + str(int(self.__surface[i][j]))
             string = string + "\n"
         return string
-                
-    def readUDMSensors(self, x ,y):
-        readings =[0 ,0 ,0 ,0]
+
+    def readUDMSensors(self, x, y):
+        readings = [0, 0, 0, 0]
         # UP 
         xf = x - 1
         while (xf >= 0) and (self.__surface[xf][y] == 0):
@@ -66,14 +66,14 @@ class Environment:
         while (yf >= 0) and (self.__surface[x][yf] == 0):
             yf = yf - 1
             readings[RIGHT] = readings[RIGHT] + 1
-     
+
         return readings
-    
+
     def saveEnvironment(self, numFile):
-        with open(numFile ,'wb') as f:
+        with open(numFile, 'wb') as f:
             pickle.dump(self, f)
             f.close()
-        
+
     def loadEnvironment(self, numfile):
         with open(numfile, "rb") as f:
             dummy = pickle.load(f)
@@ -81,20 +81,20 @@ class Environment:
             self.__m = dummy.__m
             self.__surface = dummy.__surface
             f.close()
-        
-    def image(self, colour = BLUE, background = WHITE):
-        imagine = pygame.Surface((420 ,420))
-        brick = pygame.Surface((20 ,20))
+
+    def image(self, colour=BLUE, background=WHITE):
+        imagine = pygame.Surface((420, 420))
+        brick = pygame.Surface((20, 20))
         brick.fill(BLUE)
         imagine.fill(WHITE)
         for i in range(self.__n):
             for j in range(self.__m):
                 if (self.__surface[i][j] == 1):
-                    imagine.blit(brick, ( j * 20, i * 20))
-                
-        return imagine        
-        
-        
+                    imagine.blit(brick, (j * 20, i * 20))
+
+        return imagine
+
+
 class DMap:
     def __init__(self):
         self.__n = 20
@@ -103,20 +103,19 @@ class DMap:
         for i in range(self.__n):
             for j in range(self.__m):
                 self.surface[i][j] = -1
-        
-        
+
     def markDetectedWalls(self, e, x, y):
         #   To DO
         # mark on this map the walls that you detect
         wals = e.readUDMSensors(x, y)
         i = x - 1
         if wals[UP] > 0:
-            while ((i>=0) and (i >= x - wals[UP])):
+            while ((i >= 0) and (i >= x - wals[UP])):
                 self.surface[i][y] = 0
                 i = i - 1
-        if (i>=0):
+        if (i >= 0):
             self.surface[i][y] = 1
-            
+
         i = x + 1
         if wals[DOWN] > 0:
             while ((i < self.__n) and (i <= x + wals[DOWN])):
@@ -124,7 +123,7 @@ class DMap:
                 i = i + 1
         if (i < self.__n):
             self.surface[i][y] = 1
-            
+
         j = y + 1
         if wals[LEFT] > 0:
             while ((j < self.__m) and (j <= y + wals[LEFT])):
@@ -132,7 +131,7 @@ class DMap:
                 j = j + 1
         if (j < self.__m):
             self.surface[x][j] = 1
-        
+
         j = y - 1
         if wals[RIGHT] > 0:
             while ((j >= 0) and (j >= y - wals[RIGHT])):
@@ -140,36 +139,41 @@ class DMap:
                 j = j - 1
         if (j >= 0):
             self.surface[x][j] = 1
-        
+
         return None
-        
-    def image(self, x, y):
-        
-        imagine = pygame.Surface((420 ,420))
-        brick = pygame.Surface((20 ,20))
-        empty = pygame.Surface((20 ,20))
+
+    def image(self, x, y, visited_list):
+
+        imagine = pygame.Surface((420, 420))
+        brick = pygame.Surface((20, 20))
+        visited = pygame.Surface((20, 20))
+        empty = pygame.Surface((20, 20))
         empty.fill(WHITE)
         brick.fill(BLACK)
+        visited.fill(CYAN)
         imagine.fill(GRAYBLUE)
-        
+
         for i in range(self.__n):
             for j in range(self.__m):
                 if (self.surface[i][j] == 1):
-                    imagine.blit(brick, ( j * 20, i * 20))
+                    imagine.blit(brick, (j * 20, i * 20))
                 elif (self.surface[i][j] == 0):
-                    imagine.blit(empty, ( j * 20, i * 20))
-                
+                    imagine.blit(empty, (j * 20, i * 20))
+
+        for i in visited_list:
+            imagine.blit(visited, (i[1] * 20, i[0] * 20))
+
         drona = pygame.image.load("drona.png")
-        imagine.blit(drona, (y *20, x * 20))
+        imagine.blit(drona, (y * 20, x * 20))
         return imagine
 
 
 class Drone:
-    def __init__(self, x, y, e, v, s):
+    def __init__(self, x, y, e):
         self.x = x
         self.y = y
-        self.visited = v
-        self.stack = s
+        self.visited = []
+        self.stack = []
         self.e = e
 
     def move(self, detectedMap):
@@ -189,38 +193,40 @@ class Drone:
                 self.y = self.y + 1
 
     # Function used for movement
-    def moveDSF(self, detectedMap, row, column):
-
-        # Use sleep to have a delay between moves
-        time.sleep(.10)
-
+    def moveDSF(self, detectedMap):
         # Append the current position to the visited list
-        self.visited.append([row, column])
-        # Info about the walls from UDM sensors
-        walls = self.e.readUDMSensors(row, column)
+        self.visited.append([self.x, self.y])
 
-        # Check if the direction that we look for is empty, if it was not visited before and if it isn't already in the stack
-        # The order of the directions is the one that we get from the UDM Sensor list of readings
+        # Info about the walls from UDM sensors -> no need anymore
+        # walls = self.e.readUDMSensors(row, column)
 
-        # (UP)
-        for i in range(0, walls[UP]):
-            if detectedMap.surface[row - i - 1][column] == 0 and not [row - i - 1, column] in self.visited and not [row - i - 1, column] in self.stack:
-                self.stack.append([row - i - 1, column])
+        # Check the positions, use the detectedMap to check for empty position and we check
+        # if the position is not in the visited list yet
 
-        # (LEFT)
-        for i in range(0, walls[LEFT]):
-            if detectedMap.surface[row][column + i + 1] == 0 and not [row, column + i + 1] in self.visited and not [row, column + i + 1] in self.stack:
-                self.stack.append([row, column + i + 1])
+        if self.x > 0  and detectedMap.surface[self.x - 1][self.y] == 0 and not [self.x - 1, self.y] in self.visited:
+            self.stack.append([self.x, self.y])
+            self.x = self.x - 1
+            self.visited.append([self.x, self.y])
 
-        # (DOWN)
-        for i in range(0, walls[DOWN]):
-            if detectedMap.surface[row + i + 1][column] == 0 and not [row + i + 1, column] in self.visited and not [row + i + 1, column] in self.stack:
-                self.stack.append([row + i + 1, column])
+        elif self.x < 19 and detectedMap.surface[self.x + 1][self.y] == 0 and not [self.x + 1, self.y] in self.visited:
+            self.stack.append([self.x, self.y])
+            self.x = self.x + 1
+            self.visited.append([self.x, self.y])
 
-        # (RIGHT)
-        for i in range(0, walls[RIGHT]):
-            if detectedMap.surface[row][column - i - 1] == 0 and not [row, column - i - 1] in self.visited and not [row, column - i - 1] in self.stack:
-                self.stack.append([row, column - i - 1])
+
+        elif self.y > 0 and detectedMap.surface[self.x][self.y - 1] == 0 and not [self.x, self.y - 1] in self.visited:
+            self.stack.append([self.x, self.y])
+            self.y = self.y - 1
+            self.visited.append([self.x, self.y])
+
+
+        elif self.y < 19 and detectedMap.surface[self.x][self.y + 1] == 0 and not [self.x, self.y + 1] in self.visited:
+            self.stack.append([self.x, self.y])
+            self.y = self.y + 1
+            self.visited.append([self.x, self.y])
+
+        elif len(self.stack) != 0:
+            self.x, self.y = self.stack.pop()
 
 
 # define a main function
@@ -244,13 +250,8 @@ def main():
     x = randint(0, 19)
     y = randint(0, 19)
 
-    # initialize a stack and a visited list in order to use them for the DFS
-    visited = []
-    stack = []
-    stack.append([x, y])
-
     # cream drona
-    d = Drone(x, y, e, visited, stack)
+    d = Drone(x, y, e)
 
     # Keep track of the time and the drone moves
     moves = 0
@@ -275,17 +276,17 @@ def main():
         # if event.type == KEYDOWN:
         # use this function instead of move
 
-        if len(d.stack) != 0:
-            moves += 1
-            row, col = d.stack.pop()
+        moves += 1
 
-            m.markDetectedWalls(d.e, row, col)
-            screen.blit(m.image(row, col), (400, 0))
-            pygame.display.flip()
+        time.sleep(.05)
+        d.moveDSF(m)
 
-            d.moveDSF(m, row, col)
+        m.markDetectedWalls(d.e, d.x, d.y)
+        screen.blit(m.image(d.x, d.y, d.visited), (400, 0))
+        pygame.display.flip()
 
-        else:
+        if len(d.stack) == 0 and len(d.visited) != 1:
+            print("done")
             running = False
 
     pygame.quit()

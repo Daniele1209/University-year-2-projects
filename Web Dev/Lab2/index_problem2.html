@@ -3,7 +3,54 @@
 
 <head>
     <style type="text/css">
-        div:hover  { background-color: #1ecce0 !important}
+
+        .circle {
+            left: 50%;
+            top: 50%;
+            border-radius: 50%;
+            position: absolute;
+            transform: translateX(-50%) translateY(-50%);
+            transition: background-color 700ms ease-out;
+
+        }
+
+        #circle1 {
+            width: 200px;
+            height: 200px;
+            background-color: #031634;
+            z-index: 0;
+        }
+
+        #circle2 {
+            width: 320px;
+            height: 320px;
+            background-color: #036564;
+            z-index: -1;
+        }
+
+        #circle3 {
+            width: 440px;
+            height: 440px;
+            background-color: #CDB380;
+            z-index: -2;
+        }
+        #circle4 {
+            width: 560px;
+            height: 560px;
+            background-color: #E8DDCB;
+            z-index: -3;
+        }
+
+       #circle1:hover ~ .circle {
+           background-color: #031634;
+           transition: background-color 500ms ease-in;
+        }
+
+       .circle:hover {
+           opacity: 70%
+       }
+
+
     </style>
 
     <title>
@@ -12,14 +59,12 @@
 </head>
 
 <body>
-    <div id="div1" style="background-color: #11ff00;">Div 1
-        <div id="div2" style="background-color: #cdcb18;">Div 2
-            <div id="div3" style="background-color: #c12222;">Div 3
-                <div id="div4" style="background-color: #1ecce0;">Div 4
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <div id="circle1" class="circle"></div>
+    <div id="circle2" class="circle"></div>
+    <div id="circle3" class="circle"></div>
+    <div id="circle4" class="circle"></div>
+
 </body>
 
 </html>

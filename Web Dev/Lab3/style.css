@@ -1,0 +1,687 @@
+#html {
+    background-color: #ececec;
+    font-size: 62.5%;
+}
+
+.body{
+    font-family: "Segoe UI","Segoe WP",Arial,Sans-Serif;
+    padding-left: 100px;
+    padding-right: 100px;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.upper-bar  {
+    z-index: 1000;
+    background-color: #ececec;
+    height: 100px;
+    padding-top: 0.8%;
+    position: fixed;
+    width: 100%;
+    opacity: 1;
+}
+
+.logo {
+    display: inline-block;
+    height: 100%;
+    width: 15%;
+    opacity: 1;
+}
+
+#msn-logo {
+    font-family: "Segoe UI", "Segoe WP", Arial, Sans-Serif;
+    width: 32px;
+    height: 32px;
+}
+
+#msn-text {
+    color: #212121;
+    font-family: "Segoe UI", "Segoe WP", Arial, Sans-Serif;
+    position:relative;
+    display: inline-block;
+    font-size: 27px;
+    top:-7px;
+    left: -6px;
+}
+
+#msn-message {
+    color: gray;
+    font-family: "Segoe UI", "Segoe WP", Arial, Sans-Serif;
+    top:-47px;
+    font-size: 14px;
+    left: 5px;
+    position: relative;
+}
+
+.search {
+    position: absolute;
+    height: 40%;
+    width: 700px;
+    top: 20px;
+    left: 480px;
+}
+
+#search-bar {
+    position: absolute;
+    height: 90%;
+    width: 88.5%;
+}
+
+#search-button {
+    position: absolute;
+    background-color: #3e80f3;
+    width: 10.75%;
+    height: 105%;
+    left: 89.5%;
+    border-radius: 0px 5px 5px 0px;
+}
+
+#search-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.sign-in {
+    position: absolute;
+    height: 100%;
+    width: 10%;
+    left: 82%;
+    top: 35%;
+}
+
+#sign-in-text {
+    font-family: "Segoe UI", "Segoe WP", Arial, Sans-Serif;
+    color: gray;
+    position: absolute;
+    font-size: 13px;
+}
+
+#settings-icon {
+    position: absolute;
+    left: 35%;
+    top: 9%;
+    width: 25px;
+    height: 25px;
+}
+
+.media {
+    padding-top: 6.7%;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#outlook {
+    position: absolute;
+    left: 6%;
+}
+
+#outlook-icon {
+    width: 25px;
+    height: 25px;
+}
+
+#outlook-menu {
+    text-decoration: none;
+    color: black;
+}
+
+#facebook {
+    position: absolute;
+    left: 17%;
+}
+
+#facebook-icon {
+    width: 25px;
+    height: 25px;
+}
+
+#facebook-menu {
+    text-decoration: none;
+    color: black;
+}
+
+#sport {
+    position: absolute;
+    left: 27%;
+}
+
+#sport-icon {
+    width: 25px;
+    height: 25px;
+}
+
+#sport-menu {
+    text-decoration: none;
+    color: black;
+}
+
+#office {
+    position: absolute;
+    left: 36%;
+}
+
+#office-icon {
+    width: 25px;
+    height: 25px;
+}
+
+#office-menu {
+    text-decoration: none;
+    color: black;
+}
+
+#twitter {
+    position: absolute;
+    left: 45%;
+}
+
+#twitter-icon {
+    width: 25px;
+    height: 25px;
+}
+
+#twitter-menu {
+    text-decoration: none;
+    color: black;
+}
+
+#skype {
+    position: absolute;
+    left: 54%;
+}
+
+#skype-icon {
+    width: 25px;
+    height: 25px;
+}
+
+#skype-menu {
+    text-decoration: none;
+    color: black;
+}
+
+#store {
+    position: absolute;
+    left: 64%;
+}
+
+#store-icon {
+    width: 25px;
+    height: 25px;
+}
+
+#store-menu {
+    text-decoration: none;
+    color: black;
+}
+
+#onedrive {
+    position: absolute;
+    left: 77%;
+}
+
+#onedrive-icon {
+    width: 25px;
+    height: 25px;
+}
+
+#onedrive-menu {
+    text-decoration: none;
+    color: black;
+}
+
+#hr {
+    position: relative;
+    top: 35px;
+}
+
+.menu {
+    position: relative;
+    top: 35px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#corona {
+    text-decoration: none;
+    font-size: 16px;
+    position: absolute;
+    color: #1fae5a;
+    padding-left: 10px;
+    padding-top: 7px;
+}
+
+#separation-line1 {
+    position: absolute;
+    padding-left: 8%;
+    top: -12px;
+    color: gray;
+}
+
+#weather-moon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    padding-left: 9%;
+}
+
+#weather-data {
+    position: absolute;
+    left: 11%;
+    color: gray;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 7px;
+}
+
+#edit-weather {
+    position: absolute;
+    padding-left: 17%;
+    width: 19px;
+    height: 19px;
+    padding-top: 8px;
+}
+
+#separation-line2 {
+    position: absolute;
+    left: 19%;
+    top: -12px;
+    color: gray;
+}
+
+#edge {
+    position: absolute;
+    left: 20.3%;
+    font-size: 16px;
+    color: blue;
+    text-decoration: none;
+    padding-top: 6px;
+}
+
+#separation-line3 {
+    position: absolute;
+    left: 33%;
+    top: -12px;
+    color: gray;
+}
+
+#africa-link {
+    position: absolute;
+    left: 35%;
+    color: gray;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 7px;
+}
+
+#asia-link {
+    position: absolute;
+    left: 40%;
+    color: gray;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 7px;
+}
+
+#australasia-link {
+    position: absolute;
+    left: 44%;
+    color: gray;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 7px;
+}
+
+#europe-link {
+    position: absolute;
+    left: 52%;
+    color: gray;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 7px;
+}
+
+#latin-america-link {
+    position: absolute;
+    left: 57%;
+    color: gray;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 7px;
+}
+
+#middle-east-link {
+    position: absolute;
+    left: 66%;
+    color: gray;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 7px;
+}
+
+#north-america-link {
+    position: absolute;
+    left: 74%;
+    color: gray;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 7px;
+}
+
+#life-link {
+    position: absolute;
+    left: 84%;
+    color: gray;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 7px;
+}
+
+#sport-link {
+    position: absolute;
+    left: 87.5%;
+    color: gray;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 7px;
+}
+
+#esports-link {
+    position: absolute;
+    left: 92.5%;
+    font-weight: bold;
+    background: -webkit-linear-gradient(rgb(105, 105, 105), rgb(105, 105, 105));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    padding-top: 7px;
+}
+
+#right {
+    position: absolute;
+    left: 98%;
+    width: 19px;
+    height: 19px;
+    top: 9px;
+}
+
+.news {
+    position: relative;
+    top:90px;
+    left:10px;
+}
+.newsleft {
+    display: inline-block;
+    height: 100%;
+    width: 45%;
+}
+
+.newsright {
+    position: absolute;
+    left:48%;
+    top:0px;
+    height: 70%;
+    width: 25%;
+    color: white;
+}
+
+#main-news {
+    width: 100%;
+    height: 60%;
+    border-width: 5px;
+    border-color: white;
+}
+
+#secondary-news-1 {
+    position: absolute;
+    background-color: white;
+    border-width: 5px;
+    border-color: black;
+    margin-top: 10px;
+    left: 22%;
+    width: 23%;
+    height: 30%
+}
+
+#sec-news1-img {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 75%;
+    width: 40%;
+}
+
+#sec-news1-desc {
+    color: #333;
+    position: absolute;
+    margin-top: 10px;
+    margin-right: 10px;
+    left: 47%;
+    font-size: 15px;
+}
+
+#starsinsider {
+    position: absolute;
+    left: 48%;
+    top: 68%;
+    width: 25px;
+    height: 25px;
+}
+
+#starsinsider-desc {
+    position: absolute;
+    left: 58%;
+    top: 63%;
+    font-size: 13px;
+    color: #666;
+    font-weight: bold;
+}
+
+#secondary-news-2 {
+    position: absolute;
+    background-color: white;
+    border-width: 5px;
+    border-color: black;
+    margin-top: 10px;
+    width: 23%;
+    height: 30%;
+    top: 140%;
+}
+
+#sec-news2-img {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 75%;
+    width: 40%;
+}
+
+#sec-news2-desc {
+    color: #333;
+    position: absolute;
+    margin-top: 10px;
+    margin-right: 10px;
+    left: 47%;
+    font-size: 15px;
+}
+
+#reuters1 {
+    position: absolute;
+    left: 48%;
+    top: 68%;
+    width: 25px;
+    height: 25px;
+}
+
+#reuters-desc {
+    position: absolute;
+    left: 58%;
+    top: 63%;
+    font-size: 13px;
+    color: #666;
+    font-weight: bold;
+}
+
+#main-news-2 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.80)), url("img/side-news.jpg");
+}
+
+.main-news2-desc {
+    color: white;
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    font-size: 27px;
+}
+
+#AFP {
+    position: absolute;
+    left: 5%;
+    top: 85%;
+    width: 19px;
+    height: 19px;
+}
+
+#AFP-desc {
+    position: absolute;
+    left: 13%;
+    top: 82%;
+    font-size: 13px;
+    color: Gray;
+    font-weight: bold;
+}
+
+#side-news1 {
+    position: absolute;
+    background-color: white;
+    border-width: 5px;
+    border-color: black;
+    top: 115%;
+    width: 100%;
+    height: 36%
+}
+
+#side-news1-img {
+    position: absolute;
+    margin-top: 7px;
+    margin-left: 10px;
+    height: 80%;
+    width: 30%;
+}
+
+#side-news1-desc {
+    color: #333;
+    position: absolute;
+    margin-top: 7px;
+    margin-right: 10px;
+    left: 40%;
+    font-size: 18px;
+}
+
+#hello {
+    position: absolute;
+    left: 40%;
+    top: 68%;
+    width: 18px;
+    height: 18px;
+}
+
+#hello-desc {
+    position: absolute;
+    left: 48%;
+    top: 58%;
+    font-size: 13px;
+    color: #666;
+    font-weight: bold;
+}
+
+#side-news2 {
+    position: absolute;
+    background-color: white;
+    border-width: 5px;
+    border-color: black;
+    top: 160%;
+    width: 100%;
+    height: 43%
+}
+
+#side-news2-img {
+    position: absolute;
+    margin-top: 7px;
+    margin-left: 10px;
+    height: 80%;
+    width: 30%;
+}
+
+#side-news2-desc {
+    color: #333;
+    position: absolute;
+    margin-top: 7px;
+    margin-right: 10px;
+    left: 40%;
+    font-size: 18px;
+}
+
+#guardian {
+    position: absolute;
+    left: 40%;
+    top: 68%;
+    width: 18px;
+    height: 18px;
+}
+
+#guardian-desc {
+    position: absolute;
+    left: 48%;
+    top: 60%;
+    font-size: 13px;
+    color: #666;
+    font-weight: bold;
+}
+
+#side-news3 {
+    position: absolute;
+    background-color: white;
+    border-width: 5px;
+    border-color: black;
+    top: 213%;
+    width: 100%;
+    height: 43%
+}
+
+#side-news3-img {
+    position: absolute;
+    margin-top: 7px;
+    margin-left: 10px;
+    height: 80%;
+    width: 30%;
+}
+
+#side-news3-desc {
+    color: #333;
+    position: absolute;
+    margin-top: 7px;
+    margin-right: 10px;
+    left: 40%;
+    font-size: 18px;
+}
+
+#dailymotion {
+    position: absolute;
+    left: 40%;
+    top: 68%;
+    width: 18px;
+    height: 18px;
+}
+
+#dailymotion-desc {
+    position: absolute;
+    left: 48%;
+    top: 60%;
+    font-size: 13px;
+    color: #666;
+    font-weight: bold;
+}

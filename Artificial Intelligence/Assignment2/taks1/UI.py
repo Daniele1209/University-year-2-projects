@@ -19,6 +19,7 @@ class ui():
     def selectionMenu(self):
         print("Make a selection: aStar")
         print("                  Greedy")
+        print("                  Hill")
         option = input("--> ")
 
         return option
@@ -74,15 +75,31 @@ class ui():
             screen.blit(d.mapWithDrone(self.m.image(), final_x, final_y), (0, 0))
             pygame.display.flip()
 
+            path = []
+
             if option == "aStar":
+                start_time = time.perf_counter()
                 path = self.service.searchAStar(self.m, x, y, final_x, final_y)
+                end_time = time.perf_counter()
             elif option == "Greedy":
-                path = self.service.searchGreedy(self.m, x, y, final_x, final_y)
+                start_time = time.perf_counter()
+                try:
+                    path = self.service.searchGreedy(self.m, x, y, final_x, final_y)
+                except:
+                    print("Unreachable target :(")
+                    running = False
+                end_time = time.perf_counter()
+
+            elif option == "Hill":
+                start_time = time.perf_counter()
+                path = self.service.searchHill(self.m, x, y, final_x, final_y)
+                end_time = time.perf_counter()
 
             if path:
                 screen.blit(self.service.displayWithPath(self.m.image(), path), (0, 0))
 
+        print(f"Execution time: {end_time - start_time:0.5f}")
         pygame.display.flip()
-        time.sleep(2)
+        time.sleep(3)
 
         pygame.quit()

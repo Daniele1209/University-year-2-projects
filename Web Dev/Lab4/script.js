@@ -1,7 +1,7 @@
 var board;
 
-const Player1 = "O";
-const PlayerAi = "X";
+const Player1 = "X";
+const PlayerAi = "O";
 
 const winPositions = [
     [0, 1, 2],
@@ -49,6 +49,8 @@ function turnMove(square, player) {
 }
 
 function CheckPositions(board, player) {
+    // Check every played position by the player
+    // Reduce goes through every element of the board and "a" is the final element
     let play = board.reduce((a, b, c) => (b === player) ? a.concat(c) : a, []);
 
     let gameWin = null;

@@ -1,0 +1,30 @@
+<nav>
+  <ul>
+    <li><button (click)="filterByCategory('Hoodie')" id="hoodies-button">Hoodies</button></li>
+    <li><button (click)="filterByCategory('T-Shirt')" id="tshirt-button">T-Shirts</button></li>
+    <li><button (click)="filterByCategory('Long Sleeve')" id="longsleeve-button">Long Sleeves</button></li>
+  </ul>
+</nav>
+<h3>Latest products :</h3>
+<div class="items">
+<div *ngFor="let item of products | paginate: { id: 'listing_pagination',
+                                                      itemsPerPage: 4,
+                                                      currentPage: page,
+                                                      totalItems: totalRecords }">
+      <div id="item">
+      <div class='img'><a><img alt='' src='./assets/img/{{item.image}}'></a></div>
+      <div class='info'><a class='title'>{{item.name}}</a>
+      <br>
+      <a class='category'>{{item.category}}</a>
+      <div class='price'><span class='st'>Price:</span><strong>${{item.price}}</strong></div>
+        <button
+          (click)="navigateToCart(item.name, item.category, item.price)" id="add-button">ADD CART
+        </button>
+      </div>
+      </div>
+
+</div>
+</div>
+<div class="pages">
+  <pagination-controls id="listing_pagination" maxSize="4" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+</div>

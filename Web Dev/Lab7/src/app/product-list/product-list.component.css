@@ -1,0 +1,71 @@
+#items {
+  position: relative;
+  display: inline-block;
+
+}
+
+#item {
+  float: left;
+  background-color: white;
+  width: 23%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 15px #AAAAAA;
+  margin: 15px;
+  padding: 10px;
+  text-align: center;
+  vertical-align: top;
+}
+
+img {
+  width: 100%;
+  height: 500px;
+}
+
+.pages {
+  text-align: center;
+  background: url('../../assets/img/japan.jpg') no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.items #item #add-button {
+  border-radius: 5px;
+  box-shadow: 0 0 15px #73c47d;
+  color: white;
+  background-color: rgba(10, 84, 82, 0.92);
+  padding: 10px;
+}
+
+ul {
+  list-style: none;
+  padding-top: 40px;
+  text-align: center;
+
+}
+ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 15px;
+  padding: 10px;
+  text-align: center;
+}
+
+li button {
+  border-radius: 5px;
+  box-shadow: 0 0 15px #AAAAAA;
+  background-color: white;
+  padding: 10px;
+}
+.pages li {
+  border-radius: 5px;
+  box-shadow: 0 0 15px #AAAAAA;
+  background-color: white;
+  padding: 10px;
+}
+
+h3 {
+  color: white;
+}

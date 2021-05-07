@@ -1,0 +1,22 @@
+<div class="cart">
+<h3>Shopping Cart</h3>
+<table>
+<thead>
+<tr>
+  <th>Product Name</th>
+  <th>Category</th>
+  <th>Price</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let product of products">
+  <th>{{product.name}}</th>
+  <th>{{product.category}}</th>
+  <th>{{product.price}}</th>
+    <th>
+  <button
+    (click)="deleteCart(product.id, product.price)" id="delete-button">Remove
+  </button>
+    </th>
+  </tr>
+  </table>
+</div>
